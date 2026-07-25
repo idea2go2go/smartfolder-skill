@@ -1,0 +1,11 @@
+{
+  "name": "create-smartfolder",
+  "version": "6.1.1",
+  "description": "Turn a folder into common ground, where you and your AI can do real work together. Builds a SmartFolder: a tiered navigation-and-knowledge layer (root CLAUDE.md, per-folder guides, syntheses, sidecar summaries, and status surfaces) over your existing files.",
+  "author": {
+    "name": "Paul Hess",
+    "email": "paul@hess.club"
+  },
+  "homepage": "https://github.com/idea2go2go/smartfolder-skill",
+  "license": "CC-BY-4.0 AND MIT"
+}

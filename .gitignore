@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+Icon?
+
+# Python
+__pycache__/
+*.pyc
+
+# Editors
+*~
+.idea/
+.vscode/
+
+# Office lock/temp files
+~$*
+*.tmp
