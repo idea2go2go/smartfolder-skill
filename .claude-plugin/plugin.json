@@ -1,7 +1,7 @@
 {
   "name": "create-smartfolder",
   "version": "6.1.1",
-  "description": "Turn a folder into common ground, where you and your AI can do real work together. Builds a SmartFolder: a tiered navigation-and-knowledge layer (root CLAUDE.md, per-folder guides, syntheses, sidecar summaries, and status surfaces) over your existing files.",
+  "description": "Turn a folder into a collaboration knowledge base for you, your AI, and your humans. Builds a SmartFolder: a tiered navigation-and-knowledge layer (root CLAUDE.md, per-folder guides, syntheses, sidecar summaries, and status surfaces) over your existing files, so knowledge lives in the folder instead of in an ephemeral chat session.",
   "author": {
     "name": "Paul Hess",
     "email": "paul@hess.club"

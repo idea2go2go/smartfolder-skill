@@ -8,7 +8,7 @@
     {
       "name": "create-smartfolder",
       "source": "./",
-      "description": "A Claude skill that turns a folder into common ground, where you and your AI can do real work together.",
+      "description": "A Claude skill that turns a folder into a collaboration knowledge base for you, your AI, and your humans.",
       "version": "6.1.1",
       "author": {
         "name": "Paul Hess"
