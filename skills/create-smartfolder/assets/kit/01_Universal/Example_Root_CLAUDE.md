@@ -1,8 +1,15 @@
 # CLAUDE.md — how to work in the Willow Farm SmartFolder
-*(Kit exemplar — fictionalized advisory-tier root file. Match the shape, not the contents.)*
+*(Kit exemplar — fictionalized advisory-tier root file, shown in the single-agent profile. Match
+the shape, not the contents.)*
+
+> **Dual profile:** this file also exists byte-identically as `AGENTS.md`. Copy this guard,
+> verbatim, near the top of **both** files: *"This file exists twice, byte-identical: `CLAUDE.md`
+> and `AGENTS.md`; `AGENTS.md` is canonical on divergence — repair by re-copying from it. Any
+> change to one must be applied to the other before the task completes; verify with
+> `cmp AGENTS.md CLAUDE.md` — silence means identical."*
 
 Willow Farm (a country property) is a **SmartFolder**: a navigation layer sits on top of the real
-files so anyone — or a future Claude session — can stand at any folder and get the valuable answer
+files so anyone — or a future AI session — can stand at any folder and get the valuable answer
 without opening every file. You find things **by location, not a central index**. The method spec and
 the change-tracker live in `XX_META/` (the owner can ignore it).
 
@@ -56,6 +63,15 @@ procedure: `XX_META/Change_Tracking_Procedure.md`.
   safe.
 - When a surface reads as more history than present, a rewrite is due — offer it (procedure in
   the `XX_META/` runbook).
+
+## Close the loop (when your work changed files)
+- Before finishing, update the derived surfaces in the folders you worked in — the navigation
+  protocol has already put them in front of you.
+- Then check the decay conditions of the surfaces that sit outside any one work area's read path.
+  Here that list is: **`_Willow_Operations_Hub.md`** (it makes claims about vendors, due dates, and
+  secret locations across every area).
+- A refresh reconciles the **whole** surface against present state, not just the section you came
+  for — patching one section is how a stale sentence survives a "refresh."
 
 ## Top-level orientation (chapters — deeper levels route themselves)
 - **`_Willow_Operations_Hub.md`** — start here: maintenance calendar, vendor directory, sensitive-info map.

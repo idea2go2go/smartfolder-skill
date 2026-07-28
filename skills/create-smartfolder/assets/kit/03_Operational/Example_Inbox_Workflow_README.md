@@ -4,7 +4,7 @@ through the inbox, because filing is what produces correct naming, sidecars, ind
 entity extraction; files placed directly into project folders rot the indexes. Scale the steps to
 your folder — a single-user folder needs no lock and may not need the integrity gate.)*
 
-Drop new files here when you want Claude to file them. This README is the workflow Claude follows
+Drop new files here when you want your AI assistant to file them. This README is the workflow the assistant follows
 when asked to process the inbox. If the user says "review but don't file yet," do steps 1–2 only.
 
 ## Workflow
@@ -50,9 +50,13 @@ pointers, and entities mentioned.
 **6. Extract entities** into the folder's entity index (add/revise, never rewrite hand-curated
 entries; record aliases).
 
-**7. Update the derived surfaces the filing touched:** the folder's `INDEX.md` or `_README.md`, the
-status board row (with its as-of date) if status moved, `DECISIONS.md` if a dated decision was made,
-and offer a refresh of any `_Synthesis.md` now stale.
+**7. Close the loop on derived surfaces.** Update the local surfaces the filing touched — the
+folder's `INDEX.md` or `_README.md`, the status board row (with its as-of date) if status moved,
+`DECISIONS.md` if a dated decision was made, any `_Synthesis.md` now stale — then check the decay
+conditions of the surfaces on the root file's distant list. A refresh reconciles the **whole**
+surface, not just the section the filing touched. And when a **concrete, named pattern** in this
+batch suggests a missing surface, consult the growth menu (`<meta>/GROWTH_MENU.md`) and offer it
+in one line; log a decline there.
 
 **8. Meeting extracts (if the folder uses them):** when a multi-initiative meeting record is filed,
 every initiative named in its filename codes receives an extract — the codes are a contract.

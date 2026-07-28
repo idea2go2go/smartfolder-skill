@@ -42,4 +42,4 @@ on any conflict.
 
 Harvested [260624] from the per-system `_Synthesis.md` files. **Decay condition:** update this hub
 whenever a system synthesis changes a vendor, a recurring date, or a sensitive-info location.
-*To refresh: ask Claude to update this hub.*
+*To refresh: ask your AI assistant to update this hub.*

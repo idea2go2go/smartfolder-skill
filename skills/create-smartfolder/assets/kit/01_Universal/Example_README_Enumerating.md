@@ -26,4 +26,8 @@ Path: `Education/1503 Science Fair/` · 14 files, 1 subfolder · dates 1501–15
 
 Parent: [`../_README.md`](../_README.md)
 
+---
+*Generated from the live tree as of [260617] — decays when files here are added, removed, or
+renamed. To refresh: ask your AI assistant to re-run the generator or update this guide.*
+
 <!-- smartfolder-auto:v2 sha256=<content-hash> — auto-generated; edit freely, manual changes are preserved on regen -->

@@ -26,7 +26,7 @@ _(none)_
 Entry template — copy under "## Pending" when an item is flagged:
 
 ### [YYMMDD] <relative/path> — <ADDED | CHANGED | MOVED | REMOVED>
-- **Finding:** <e.g. CHANGED, 6.1 KB → 6.5 KB (grew 465 B)>
+- **Finding:** <e.g. CHANGED, 6.1 KB → 6.5 KB (grew 310 B)>
 - **Flagged by:** <session user> on [YYMMDD]
 - **Note:** <anything the team member said; "none">
 - **Muted:** yes (`bless-file`) — won't re-alert until it changes again

@@ -22,3 +22,8 @@ row is the source of truth for the one-line status; the README carries the fulle
 ## Housekeeping (as of [260701])
 
 - Inbox backlog from the June freeze is cleared; deferred items live in `09_Meta/DEFERRED_STEPS.md`.
+
+---
+*Derived surface — the initiative folders and their records are primary. Decays when: any
+initiative's status moves without its row being rewritten. To refresh: ask your AI assistant to
+update this board.*

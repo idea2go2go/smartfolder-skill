@@ -10,3 +10,8 @@ The log answers "why is it this way?" months later without re-reading the meetin
 | [260610] | **LOI signed with Meridian** — 10-yr term, 120K sq ft, landlord retrofit capped at $1.2M | `260610_LOI_MeridianSigned.pdf` |
 | [260619] | **Roof passes for solar with racking change** — proceed with HP-SOLAR in parallel; structural report accepted | `260619_StructuralStudy_RoofLoad.pdf` |
 | [260628] | **Hold the CPI-floor position on escalation** through one more redline round; concede only against a longer guaranty from Castle Rock | `260628_MeetingExtract_LeaseRedline.md` |
+
+---
+*Append-only derived record — each row's cited source is primary and wins on conflict. Decays
+when: a decision lands without a row. To refresh: ask your AI assistant to append the missing row
+(never rewrite existing rows).*

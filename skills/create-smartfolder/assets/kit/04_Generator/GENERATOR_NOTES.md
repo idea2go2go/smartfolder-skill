@@ -33,5 +33,8 @@ version token (`v2`) allows the marker schema itself to evolve.
 - Never generate inside macOS bundles or trash/staging folders.
 - At parallel scale, give each sub-agent one disjoint chapter, its own move-log, and a required
   integrity report (source vs. result counts); the main session stamps the hashes.
-- Small folders don't need any of this — write guides directly; the as-of line is mandatory, the
-  marker optional.
+- Every guide — generated or hand-written — carries the four freshness elements: the as-of line,
+  provenance, a decay condition, and the refresh breadcrumb. The generator emits them as a generic
+  footer (generated-from-the-tree provenance; decays on add/remove/rename); hand-written guides
+  state them specifically. Small folders don't need the generator at all — write guides directly;
+  the hash marker is optional there.

@@ -26,3 +26,7 @@ the parties still differ (landlord: CPI with a 3% floor; tenant: fixed 3%).
 
 Bluefield Partners (landlord); Meridian Logistics (tenant); Castle Rock Capital (tenant's parent
 guarantor — guaranty at Exhibit D, p. 74); Harbor Structural LLC (retrofit contractor, named §9.3).
+
+---
+*Derived [260628] from the raw file above; the raw file wins on conflict. Decays when: a newer
+redline supersedes this draft. To refresh: ask your AI assistant to update this sidecar.*

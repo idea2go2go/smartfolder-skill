@@ -20,7 +20,10 @@ AI, and your human collaborators can all open and quickly understand without rea
 You, your AI, and your human collaborators can all work within and update the same folder, while the
 SmartFolder infrastructure continues to synthesize and update its knowledge layers. That knowledge
 lives in the folder itself, not in an ephemeral chat session where you have to re-explain everything
-to each new session. Each participant, human or AI, starts with everything that is already known and
+to each new session. And not only your AI: for folders shared with other assistants, the skill
+deposits the operating manual as byte-identical `CLAUDE.md` and `AGENTS.md` files, each guarding the
+other — so Claude and every agent that reads the [`AGENTS.md`](https://agents.md) open format get
+the same instructions, and divergence is caught mechanically. Each participant, human or AI, starts with everything that is already known and
 leaves something useful for whoever comes next. Over time, the folder becomes the knowledge base
 instead of the conversation.
 
@@ -33,6 +36,17 @@ folder, large or small.
 
 Your original files are never edited or deleted. The skill works in careful stages, shows you its
 plan, and asks for approval before it moves or renames anything.
+
+## What's new in v6.2.0
+
+Works alongside the other AI assistants that work in folders — ChatGPT Work (tested), Gemini Spark,
+and the `AGENTS.md` ecosystem (Codex, Cursor, VS Code, supported GitHub Copilot surfaces) — via the
+twin root files described above. Plus: ask-first owner buy-in letters and a plain-language owner
+guide for handing a finished folder to someone non-technical; a deposited growth menu of what a
+folder could grow next; a version baseline so folders upgrade by comparison rather than guesswork;
+close-the-loop rules that keep the synthesis and status layer current as new information lands; a
+drift-disposition playbook for shared folders; and a feedback path for surfaces users invent.
+[Full notes on the release page.](https://github.com/idea2go2go/smartfolder-skill/releases)
 
 ## Install
 

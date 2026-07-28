@@ -34,4 +34,4 @@ items have been added or changed since — **especially any vendor change at Val
 service result.** Staleness test: any file here newer than this synthesis's as-of date means a
 refresh is due.
 
-*To refresh: ask Claude to update this synthesis.*
+*To refresh: ask your AI assistant to update this synthesis.*

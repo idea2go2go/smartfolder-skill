@@ -1,7 +1,7 @@
 # Inbox processing lock
 *(Kit exemplar — a courtesy lock for shared folders synced over Dropbox or similar. It is a
 persistent toggle, never deleted. Note the dual audience: a plain-English note for humans, machine
-instructions for Claude.)*
+instructions for AI assistants.)*
 
 **STATUS: UNLOCKED**
 
@@ -15,22 +15,22 @@ instructions for Claude.)*
 
 ## If you're a person reading this: you don't need to do anything
 
-This file is housekeeping between the Claude assistants that work in this shared folder. When
-someone asks their Claude to file the inbox, their Claude marks this file LOCKED while it works and
-UNLOCKED when it finishes; a second Claude that sees the lock politely waits its turn.
+This file is housekeeping between the AI assistants that work in this shared folder. When someone
+asks their assistant to file the inbox, it marks this file LOCKED while it works and UNLOCKED when
+it finishes; a second assistant that sees the lock politely waits its turn.
 
 - **Keep dropping files into this folder exactly as you always have** — always safe, LOCKED or not.
 - **Please don't edit, move, or delete this file.** It lives here permanently by design.
 - If it has said LOCKED for many hours and that seems wrong, mention it to the maintainer — or ask
-  your own Claude, which knows how to handle a stale lock safely.
+  your own AI assistant, which knows how to handle a stale lock safely.
 
 ---
 
-## Protocol for Claude sessions (machine instructions)
+## Protocol for AI sessions (machine instructions)
 
 1. **Read this file first**, before any filing pass.
 2. If **UNLOCKED** — overwrite the block above the first `---` with `STATUS: LOCKED`, the user's
-   name/email, the Claude model/surface, an `[YYMMDD] HH:MM (tz)` timestamp, and a one-line
+   name/email, the assistant and surface (e.g. "via Claude (Cowork)"), an `[YYMMDD] HH:MM (tz)` timestamp, and a one-line
    description of the pass. Wait ~30 seconds for sync, re-read to confirm you are still the holder,
    and check this folder for `... (conflicted copy) ...` siblings (created on simultaneous writes —
    if one exists, both parties back off, stage the conflicted copies for manual deletion, retry in a

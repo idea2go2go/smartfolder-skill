@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2026 Paul Hess (paul@hess.club)
-# Part of the Create SMARTFOLDER kit. Released under the MIT License;
+# Part of the SmartFolder Skill kit. Released under the MIT License;
 # full text in the LICENSE file at the kit root. Questions: paul@hess.club.
 """Filing integrity scanner for a shared, multi-writer deal workspace.
 
@@ -42,12 +42,16 @@ Design notes:
   - Excluded from tracking: XX_Assets-to-File/ (the inbox is expected to
     churn), any _TO_DELETE_MANUALLY/ folder, hidden files/folders
     (.DS_Store etc.), macOS custom-folder-icon marker files ("Icon\r"),
-    and the manifest itself.
+    OS/app by-products (desktop.ini, Thumbs.db, "~$" lock/temp files),
+    and the manifest itself. macOS bundle-package directories (.pages,
+    .key, etc.) are atomic: never descended into or content-tracked.
   - "Changed" = same path, different content hash. Mod dates are not used:
     sync tools and Finder touch them without changing content.
   - "Moved" = same content hash disappeared from one path and appeared at
     another (reported as a move, not an add+remove pair).
 """
+
+from __future__ import annotations  # keeps 3.9-compatible annotations (see read_stamp)
 
 import argparse
 import datetime
@@ -64,7 +68,15 @@ EXCLUDED_DIRS = {"XX_Assets-to-File", "_TO_DELETE_MANUALLY", "__pycache__"}
 # the resource fork) and reappear whenever a folder with a custom icon syncs,
 # e.g. through Dropbox or after a folder move. Pure OS cruft like .DS_Store, so
 # excluded from tracking. Matched exactly so a genuine file named "Icon" is not.
-EXCLUDED_FILE_NAMES = {"Icon\r"}
+EXCLUDED_FILE_NAMES = {"Icon\r", "desktop.ini", "Thumbs.db"}
+# Office lock/temp files ("~$Budget.xlsx"); ".~lock.…#" files are caught by the
+# hidden-file rule. These appear when someone merely opens a document and would
+# otherwise generate recurring phantom ADDED/REMOVED findings.
+EXCLUDED_FILE_PREFIXES = ("~$",)
+# macOS bundle-package directories are atomic (skill non-negotiable 4): never
+# descend into or track their contents. Mirrors smartfolder_watch.py.
+BUNDLE_EXTS = {".pages", ".numbers", ".key", ".rtfd", ".webarchive",
+               ".oo3", ".ooutline", ".goodnotes", ".more"}
 
 
 def script_dir() -> Path:
@@ -121,10 +133,12 @@ def walk_tree(root: Path) -> dict:
             if p.is_dir():
                 if p.name in EXCLUDED_DIRS:
                     continue
+                if p.suffix.lower() in BUNDLE_EXTS:
+                    continue  # atomic bundle: never descend into or track contents
                 recurse(p)
             elif p.is_file():
-                if p.name in EXCLUDED_FILE_NAMES:
-                    continue  # macOS Icon\r marker etc.: OS cruft, not content
+                if p.name in EXCLUDED_FILE_NAMES or p.name.startswith(EXCLUDED_FILE_PREFIXES):
+                    continue  # OS/app by-products, not content
                 if p in skip:
                     continue  # scanner state files, not project content
                 size = p.stat().st_size

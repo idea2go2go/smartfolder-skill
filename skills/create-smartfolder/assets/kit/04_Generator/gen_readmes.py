@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2026 Paul Hess (paul@hess.club)
-# Part of the Create SMARTFOLDER kit. Released under the MIT License;
+# Part of the SmartFolder Skill kit. Released under the MIT License;
 # full text in the LICENSE file at the kit root. Questions: paul@hess.club.
 """Generate a per-folder _README.md "SmartFolder" index across the Rowan, Tess,
 and Shared archives — v5 aligned.
@@ -612,6 +612,9 @@ def render(node):
          "names its subfolders at a glance; each subfolder has its own `_README.md` "
          "(tiny ones are folded into this guide).*"),
         f"**As of {TODAY}.**",
+        (f"*Generated from the live tree as of {TODAY} — decays when files here are added, "
+         "removed, or renamed. To refresh: ask your AI assistant to re-run the generator "
+         "or update this guide.*"),
         "## For people",
         human_section(node),
         "## For Claude / AI sessions",

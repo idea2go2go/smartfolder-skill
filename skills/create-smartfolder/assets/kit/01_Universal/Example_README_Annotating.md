@@ -24,3 +24,8 @@ timeline — browse the directory listing chronologically rather than expecting 
 
 - `Diligence/` — third-party reports on the building (own `_README.md`).
 - `Superseded_Drafts/` — earlier LOI/lease versions, kept for history; don't cite as current.
+
+---
+*Derived from the files here as of [260701]; the raw files win on conflict. Decays when: a draft
+newer than [260628] lands, the escalation point resolves, or files are added here. To refresh: ask
+your AI assistant to update this guide.*

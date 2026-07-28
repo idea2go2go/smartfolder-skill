@@ -48,7 +48,7 @@ offer four choices:
    file(s), for the owner to send to whoever maintains this SmartFolder. Leave the file in place; do
    **not** re-snapshot.
 3. **Remind me next time.** Do nothing; it resurfaces at the next check as a standing nudge.
-4. **Dismiss as not-for-filing (rare).** Only for genuine non-content (sanctioned Claude output or
+4. **Dismiss as not-for-filing (rare).** Only for genuine non-content (sanctioned assistant output or
    confirmed junk). Re-`snapshot` to clear it. Deliberately the least-used path.
 
 ## Re-baseline discipline (why a CLEAN check is meaningful)
@@ -63,7 +63,7 @@ per-file mute; a finding stops surfacing only by being filed or dismissed.)
 - **Tracked:** the owner's raw files, including any hand-authored master notes (so direct edits to
   them are caught).
 - **Ignored:** the inbox, trash/staging, `XX_META` itself, hidden/OS cruft (`.DS_Store`, dotfiles),
-  office lock/temp files (`~$…`, `.tmp`), `CLAUDE.md`, and all Claude-derived guides (`_README.md`,
+  office lock/temp files (`~$…`, `.tmp`), `CLAUDE.md` / `AGENTS.md`, and all AI-derived guides (`_README.md`,
   `_Synthesis.md`, `*_Summary.md`, hubs).
 - **macOS bundles** are tracked as a single unit (size + newest mtime), never recursed into.
 
@@ -73,4 +73,4 @@ Hybrid: if size and mtime both match the baseline, trust unchanged (no hashing).
 changed. If size matches but mtime moved, re-hash; a matching hash means a sync-only touch (treated
 unchanged), otherwise it genuinely changed. Only files that look different are ever re-read.
 
-*To refresh: ask Claude to update this procedure.*
+*To refresh: ask your AI assistant to update this procedure.*

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2026 Paul Hess (paul@hess.club)
-# Part of the Create SMARTFOLDER kit. Released under the MIT License;
+# Part of the SmartFolder Skill kit. Released under the MIT License;
 # full text in the LICENSE file at the kit root. Questions: paul@hess.club.
 """
 smartfolder_watch.py - casual, non-blocking change-tracker for THIS SmartFolder (single-property).
@@ -18,7 +18,7 @@ Two verbs (no property argument - it watches its own parent folder):
 Design: hybrid detection (trust size+mtime; re-hash only when mtime moved but size didn't - the
 Dropbox sync-touch case); stateless (re-snapshot to re-baseline; the baseline is only re-written when
 content is filed or dismissed). Tracks the owner's RAW files INCLUDING `MASTER *.docx`; ignores the
-inbox, trash/staging, XX_META itself, hidden/OS-cruft, office lock/temp files, and Claude's derived
+inbox, trash/staging, XX_META itself, hidden/OS-cruft, office lock/temp files, and AI-derived
 guides (_README.md / _Synthesis.md / *_Summary.md / hub). macOS bundles tracked atomically.
 See this folder's CLAUDE.md "Change tracking". Manifest: XX_META/_manifests/manifest.tsv
 """
@@ -42,7 +42,7 @@ BUNDLE_EXTS = {".pages", ".numbers", ".key", ".rtfd", ".webarchive",
 
 def is_excluded_file(name):
     n = name.rstrip("\r\n")
-    if n in (".DS_Store", "Icon", "CLAUDE.md"): return True   # OS cruft + the resident guide
+    if n in (".DS_Store", "Icon", "CLAUDE.md", "AGENTS.md"): return True  # OS cruft + resident guides
     if name.startswith("."):                  return True
     if name.startswith("~$") or name.endswith(".tmp"): return True
     if name.endswith("_Summary.md"):          return True
