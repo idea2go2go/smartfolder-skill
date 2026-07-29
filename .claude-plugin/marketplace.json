@@ -1,5 +1,6 @@
 {
   "name": "smartfolder",
+  "description": "Home of the SmartFolder Skill: turn any folder of files into a self-describing knowledge base for you, your AI, and your human collaborators.",
   "owner": {
     "name": "Paul Hess",
     "email": "paul@hess.club"
