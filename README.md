@@ -68,20 +68,23 @@ A first conversion of a large folder can take a while and may span more than one
 normal. Afterwards, the folder maintains itself: ask Claude to *"file the new items"* or *"refresh
 the summaries"* whenever things change.
 
-## What's new in v6.2.0
+## What's new in v6.3.0
 
-**Works alongside the other AI assistants that work in folders** — ChatGPT Work (tested), Gemini
-Spark, and the [`AGENTS.md`](https://agents.md) ecosystem (Codex, Cursor, VS Code, supported GitHub
-Copilot surfaces). The operating manual is written twice, byte-identical as `CLAUDE.md` and
-`AGENTS.md`, each copy guarding the other, so every assistant gets the same instructions and
-divergence is caught mechanically.
+**Folders now check for their own updates.** Every new SmartFolder is built carrying the check
+inside it, so the folder looks after itself and this skill needn't be installed for that to work.
+About once a month a session working in the folder compares what you have against the latest
+release, says in plain language what changed, and offers to fetch it. Installing stays in your
+hands. An offline folder carries on and tries again later.
 
-Plus: ask-first owner buy-in letters and a plain-language owner guide for handing a finished folder
-to someone non-technical; a deposited growth menu of what a folder could grow next; a version
-baseline so folders upgrade by comparison rather than guesswork; close-the-loop rules that keep the
-synthesis and status layer current as new information lands; a drift-disposition playbook for shared
-folders; and a feedback path for surfaces users invent.
-[Full notes on the release page.](https://github.com/idea2go2go/smartfolder-skill/releases)
+Plus: knowledge summaries that stay current even when the work that dated them happened elsewhere
+in your SmartFolder; session flags - flag issues or questions for other members to address; a
+one-line record of everything in the discard pile, so emptying it is never an act of blind trust;
+and clearer names for the two housekeeping folders. First bug fix: the tool that writes the folder
+guides didn't recognize the discard folder, so it wrote guides inside it instead of leaving it
+alone.
+
+[Full notes on the release page.](https://github.com/idea2go2go/smartfolder-skill/releases/latest)
+Every version's story is in [CHANGELOG.md](CHANGELOG.md).
 
 ## More
 
