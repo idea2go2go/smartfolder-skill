@@ -6,7 +6,21 @@ description: Turn a folder hierarchy into a SmartFolder — a tiered navigation-
 <!--
   ============================================================
   SmartFolder Skill — a skill for building SmartFolders.
-  Version: v6.2.0 — last changed [260728].
+  Version: v6.3.0 — last changed [260804].
+  v6.3.0: close-the-loop hardened — the distant test sweeps the
+  whole surface inventory, external-state surfaces are distant
+  by definition, point-in-time state moves out of prescriptive
+  files, and irreducible constants carry source pointers
+  (item 9); monthly version check deposited into every built
+  folder — run in ordinary use by any assistant, with a
+  download offer and an explicit assessment ask (item 10);
+  boundary duties grouped in one root-file section;
+  session-flags register for collaborative folders, plus the
+  session-boundary prompt asked of every folder (item 12); the
+  staging rule restated as a category, with a light
+  disposal-manifest carve-out (item 13); housekeeping folders
+  renamed XX_INBOX and XX_DELETE_MANUALLY, and the generator's
+  staging guards fixed to match (item 14).
   v6.2.0: drift-disposition matrix added to the kit (item 1);
   agent-population dial with guarded CLAUDE.md/AGENTS.md
   duplication and a Phase-6 parity probe (item 2);
@@ -37,7 +51,7 @@ description: Turn a folder hierarchy into a SmartFolder — a tiered navigation-
   ============================================================
 -->
 
-# SmartFolder Skill (v6.2.0)
+# SmartFolder Skill (v6.3.0)
 
 Turn the target folder into a **SmartFolder**: a self-maintaining navigation-and-knowledge layer
 over the real files, so the user, other people, and future Claude sessions can operate in it with
@@ -65,8 +79,16 @@ ending at a review gate.
 2. **Back up first** (zip/tar the tree) before any move or rename. **Log every move/rename** to a
    `move-log.csv`. After moving, **verify by content hash against the backup** — not just counts.
 3. **Never delete.** Stage discards into a single manual-delete folder at the root (many
-   environments block deletion anyway). One such folder per SmartFolder; never read or reconcile
-   against its contents.
+   environments block deletion anyway); one such folder per SmartFolder. What the staging rule
+   protects is a **category, not a location**: staged content never re-enters the folder's
+   knowledge layer — never read, quoted, reconciled against, or restored from. **One exception:**
+   a single light manifest (`_README.md`), written at staging time by the session that staged —
+   one line per item: what moved, when, why, where the surviving copy is — so the owner isn't
+   emptying unlabeled files on trust. The separating test: the manifest may be consulted *only*
+   to answer a question about the disposal itself ("is it safe to empty this? why is that in
+   there?"); any other use, including answering anything about the folder's subject matter, is a
+   violation of the rule, not an exercise of the exception. The manifest is not curated, earns no
+   maintenance, and **dies with the contents** — when the owner empties the folder, it resets.
 4. **macOS bundles are atomic** (`.rtfd`, `.oo3`, `.key`, `.pages`, `.numbers`, `.goodnotes`,
    `.webarchive`, companion `*_data` dirs, and kin): rename if needed, never recurse into or write
    inside.
@@ -76,6 +98,10 @@ ending at a review gate.
    folder is shared or off-limits, work from a copy.
 7. **Never guess.** Flag anything you can't confidently summarize; a confidently wrong summary or
    synthesis is worse than none.
+
+*One procedure in this skill reaches the network — the monthly version check this skill deposits
+into every folder it builds (Phase 5); everything else is local files. The check degrades to
+silence when the network doesn't answer, so no folder ever depends on connectivity.*
 
 ## The invariant core (every SmartFolder shares these)
 
@@ -202,7 +228,13 @@ Phase-1 exploration, and by asking (AskUserQuestion works well here). The dials:
    `Example_Owner_Letter.md` models the shape and tone). Most folders are built by, with, or under
    the authority of their owner and pass through with no mention — this is a conditional offer,
    never a standing step. Usage changes over time, so the deposited growth menu carries the same
-   trigger forward.
+   trigger forward. A second conditional offer hangs on the same dial: where several people will
+   use the folder across sessions, offer the **session-flags register** (the kit's
+   `Example_SESSION_FLAGS.md`) — a person-addressed notification surface for "next time X is
+   here, tell or ask them Y," whose content and state live entirely in the register while the
+   root file carries only the trigger. Collaborative folders only — a single-writer folder is
+   never shown it; the deposited growth menu carries the same conditional row forward, so a
+   folder that grows into multi-user life can reach it later.
 2. **Change velocity.** Archival (rarely changes), slow-drip, or live and fast-moving?
 3. **Dominant question type.** What will people mostly ask here — *navigation* ("where is X?"),
    *wisdom* ("how does this work? what matters? what's due?"), or *status* ("where do things
@@ -314,7 +346,7 @@ logs and required integrity reports; keep judgment calls and shared-file writes 
 **Phase 5 — Deposit the infrastructure.** The SmartFolder must be self-contained:
 - The root **`CLAUDE.md`** containing: what this SmartFolder is; the navigation protocol and descent
   rule; the freshness/precedence rules; the refresh and write-forward rules; the close-the-loop
-  rules below; the conventions; a thin top-level
+  rules below; a grouped **Session boundaries** section (below); the conventions; a thin top-level
   orientation (the only thing the root enumerates — one line per chapter); a short maintenance note
   pointing to the runbook. Write prescriptive content dateless and present-tense; write descriptive
   content (orientation, state) with as-of dates. The kit's `Example_Root_CLAUDE.md` models the
@@ -322,21 +354,54 @@ logs and required integrity reports; keep judgment calls and shared-file writes 
   carrying the reciprocal instruction. (Bonus, not guarantee: current Claude Code strips HTML
   comments from `CLAUDE.md` at injection, so maintainer notes there can be context-free; don't
   rely on it elsewhere, and never in dual folders.)
-- **Close the loop — three deposited rules** (≤10 root-file lines; procedure detail goes in the
+- **Close the loop — four deposited rules** (≤12 root-file lines; procedure detail goes in the
   runbook). *Locality:* before finishing, update the derived surfaces in the folders you worked
   in. The navigation protocol has already put them in front of you, but state the rule anyway — a
   session editing by absolute path gets no protection from the side effect. *The distant-surface
   list:* then check the decay conditions of the named surfaces that sit outside every work area's
   read path. Build the list with the **distant test** — does this surface make claims about
-  material that does not sit beside it? — applied to the surface inventory this phase just built.
-  The list names **surfaces, never events**: each surface's own decay condition remains the single
-  source of truth for whether it fired; the root list only supplies awareness that the surface
-  exists. Folders where nothing fails the distant test get the two sentences and no list.
-  *Reconcile whole:* a refresh reconciles the entire surface against present state, not just the
-  section you came for — patching one section is how a stale sentence survives a "refresh." Do not
-  build an event-indexed obligation table ("if X happened, update Y") — that is a central index by
-  another name, and it silently rots when a surface's decay condition changes.
-- A **meta folder** holding: the **runbook** (how to refresh guides and syntheses, perform a
+  material that does not sit beside it? — applied to the **entire surface inventory** this phase
+  just built, and re-applied whenever a surface is added later. A surface describing an **external
+  state** — what is published, what is installed, what a counterparty holds — is distant **by
+  definition**: it is falsified by acts performed entirely elsewhere, so no work area's read path
+  ever surfaces it. The list names **surfaces, never events**: each surface's own decay condition
+  remains the single source of truth for whether it fired; the root list only supplies awareness
+  that the surface exists. Folders where nothing fails the distant test get the two sentences and
+  no list. *Reconcile whole:* a refresh reconciles the entire surface against present state, not
+  just the section you came for — patching one section is how a stale sentence survives a
+  "refresh." Reconcile-whole keeps a surface accurate; it never asks whether a sentence is
+  warranted — that is the next rule's job. *State stays out of prescriptive files* — and this rule
+  takes priority: **removal beats annotation**. Point-in-time state — versions, counts, item
+  lists, statuses — lives on dated status surfaces; a prescriptive file states identity and rules
+  and **points at** its state; the root manual in particular never restates what a status surface
+  owns. A stale figure in a dateless file is invisible to every decay mechanism above — the root
+  manual is the worst case, since it auto-loads into every session and survives compaction. The
+  constants that cannot move out (a README describing its own contents, a baseline recording a
+  version) carry a **source pointer** to where the truth is checkable — "three scripts (see the
+  table below)" — which does its real work at edit time, putting the check in front of whoever
+  rewrites the sentence. Annotate only what could not be removed. Once state has moved out, the
+  root file's residual dated content is its as-of line and orientation table, which its
+  close-the-loop wording names. Do not build an event-indexed obligation table ("if X happened,
+  update Y") — that is a central index by another name, and it silently rots when a surface's
+  decay condition changes. Where the closeout *hangs* — which machinery, if any, runs it at
+  session end — is settled once by the session-boundary prompt below; the deposited wording cites
+  that answer rather than restating it.
+- **The session-boundary prompt — asked once, of every folder:** *where do this folder's session
+  boundaries live?* That is: which machinery, if any, marks session start and session end. Wire
+  **both bookends** to the answer — delivery of any person-addressed surface (the session-flags
+  register, where adopted) hangs at session start; the close-the-loop pass hangs at session end.
+  The answer is whatever the folder already runs: the integrity gate's session-start mode if it
+  runs one, the change watcher's sweep if that is all it has, root-file prose alone if it runs
+  nothing. A folder with no machinery gets no machinery — the floor answer is exactly the status
+  quo. **The prompt's deposit is the root manual's *Session boundaries* section** — every boundary
+  duty grouped in one place, one line per duty, each pointing at its owning procedure file: the
+  integrity scan where one runs, delivery of the flags register where adopted, the monthly version
+  check (below), and the close-the-loop pass. Triggers live here because the root manual is the
+  one file guaranteed to be in context — a duty that depends on a session remembering to open some
+  other file misses silently — while procedure detail stays in the files each line points to. A
+  duty adopted later, from the growth menu or otherwise, **adds a line to this section rather than
+  a rule elsewhere.**
+- The **runbook** (how to refresh guides and syntheses, perform a
   chapter-boundary rewrite — seal the arc, rewrite state-first — add a chapter, handle intake,
   close a task — local surfaces, then the distant list via each surface's own decay condition,
   then the root-files parity check where the dual profile applies — run the version-upgrade
@@ -368,7 +433,14 @@ logs and required integrity reports; keep judgment calls and shared-file writes 
   installed payload byte-for-byte and stamp the baseline **reconstructed**, with file count and
   hash; (4) never fabricate — if no rung is reachable, ask the user for the package.
   `VERSION_BASELINE.md` records version, route (original / fetched / reconstructed), file count,
-  and hash. The runbook gains the **version-upgrade review**: unpack
+  and hash — plus **the monthly version check: its procedure and the three fields it depends on**
+  (the check is deposited *here*, in full, so any ordinary session runs it from the folder alone —
+  see the next bullet):
+  the repository's **Published** releases URL (the check reads it — load-bearing, not descriptive),
+  the **permanent download URL** beside it
+  (`github.com/idea2go2go/smartfolder-skill/releases/latest/download/SmartFolder-Skill.skill`,
+  stable across releases; Offer A fetches it), and a **`Last checked: YYYY-MM`** line the check
+  stamps. The runbook gains the **version-upgrade review**: unpack
   baseline and new release → diff `SKILL.md` (non-negotiables, invariant core, dials, phases,
   verification) and `diff -rq` the kits → classify each delta (new invariant → probably adopt; new
   optional surface or machinery → a growth-menu question subject to its triggers, never an
@@ -379,6 +451,63 @@ logs and required integrity reports; keep judgment calls and shared-file writes 
   recorded profile governs unless the owner says otherwise. Exception: where the folder's own
   subject matter *is* the skill, deposit a stamped pointer to the local copy rather than a
   duplicate that can silently drift.
+- **The deposited monthly version check** — written into `VERSION_BASELINE.md` as a procedure any
+  session working the folder can run, this skill nowhere in the loop; the root manual carries only
+  its trigger line in *Session boundaries*. **"Any session" is scoped by the folder's own
+  agent-population profile:** in a single-agent folder the trigger lives in `CLAUDE.md` and Claude
+  sessions run the check; in the dual profile, every assistant reading either root twin sees the
+  same trigger. A single-agent folder makes no promise to assistants its profile never named — if
+  a non-Claude assistant joins the folder's life, that is a **dial change**, routed through the
+  upgrade review, which deposits the twin. The procedure, in full:
+  - **Throttle — and the stamp records an *answer*, never an attempt.** At most one delivered
+    check per calendar month: `Last checked: YYYY-MM` current → skip silently. Set the stamp only
+    when the check concludes with a **usable published-release answer** — including "you are
+    current" — or when its offers were delivered and declined. **Never stamp an unreachable,
+    empty, or unparseable result**: note the failed attempt (date, reason) beside the stamp line
+    and retry silently at the next session boundary. Retries are invisible — a failed check never
+    reaches an offer, so there is nothing to nag with; the anti-nag rule governs *offers*, and an
+    answered-and-declined month re-raises only at the next month. **The stamp is a write**: in a
+    folder running a manifest or drift detector, list `VERSION_BASELINE.md` as a sanctioned write
+    target at deposit time, or the check fires an integrity finding every month.
+  - **Three versions, read fresh:** the folder's **baseline** (this file); the **skill installed
+    on this machine, read live** — a Claude session reads the version line of the installed
+    skill's `SKILL.md` at its skill location; and the **latest published release**, from the
+    *Published* URL above. Three terms because they answer three different questions: installed
+    ahead of baseline → offer the assessment directly; published ahead of installed → Offer A
+    first; installed ahead of published (a machine running a pre-release) → correctly, nothing.
+    **Degradation is per-session:** where no installed version is readable — a non-Claude
+    assistant, or Claude without the skill — the middle term is absent and the check runs
+    baseline-vs-published. This file never records what is installed: folders travel across
+    machines, and only the live session knows its own.
+  - **Offer A — the published release is ahead** (of the installed skill; of the baseline, in the
+    degraded case). Name what changed in plain language — the release's own headline, never a
+    generic "updates available" — and offer to **download the package itself**: one fetch of the
+    permanent URL above, saved where the user can reach it. **Installing happens in Claude** —
+    Settings → Skills → upload (desktop route), or `/plugin update` (marketplace route) — and that
+    is a fact about the process, not the assistant: a Claude session walks the user through it; a
+    non-Claude session says installing happens in Claude, hands over the downloaded bundle, and
+    continues identically. No session installs or replaces Claude's installed skill itself; none
+    can. Warn, verbatim concern: **upload the whole `.skill` bundle** — a chat "save skill" update
+    replaces only the prompt file and strands the old kit.
+  - **The bridge from A to B is an explicit ask, never an assumption.** Once the user holds the
+    newer version — installed, or accepted as a download — ask: *"you have vX.Y now — want
+    recommendations for bringing this SmartFolder up to it?"* Offer B runs only on a yes. If A was
+    declined or skipped, still proceed to B on its own condition.
+  - **Offer B — a newer skill than the baseline is in hand, and the user said yes:** the runbook's
+    version-upgrade review, unchanged. The assessment needs the newer version's *content*, and the
+    downloaded `.skill` bundle serves exactly as well as an installed skill — which is what makes
+    the non-Claude path whole. Recommendations only; the recorded profile governs. No baseline at
+    all → route through the full diagnostic instead of a diff, and deposit a baseline on
+    completion as if built fresh.
+  - **Unreachable is not an answer — and neither is emptiness.** Network or repository unreachable
+    → skip Offer A silently (note it, don't fail the check), still consider Offer B from local
+    facts, and **leave the month unstamped** — record the attempt and let a later session retry
+    (see the throttle above; the stamp is folder-global while environments are per-session, so a
+    sandboxed session's failure must not silence a capable session's check for the rest of the
+    month). **An empty or unparseable response is unreachable, never an
+    answer**: release pages commonly render client-side and return empty bodies as successes, so
+    distinguish *"the repository said this is latest"* from *"nothing usable came back"* — only
+    the first may conclude the folder is current. Offer, never force, at every step.
 
 **Phase 6 — Verify.**
 - Coverage invariant: every meaningful folder has a `_README.md` or is explicitly covered by its
@@ -395,7 +524,16 @@ logs and required integrity reports; keep judgment calls and shared-file writes 
   Never ask an agent to confirm it "has the instructions": a session without them will confabulate
   a plausible answer rather than report absence.
 - The root file's close-the-loop list names exactly the surfaces that fail the locality test — no
-  more, no fewer — and every listed surface states its own decay condition.
+  more, no fewer — swept against the **entire** surface inventory, with every external-state
+  surface on it by definition; and every listed surface states its own decay condition.
+- Prescriptive, dateless files (the root manual, the runbook, deposited READMEs) carry no
+  point-in-time state that a status surface owns; **spot-check a sample** of the source-pointered
+  constants that remain against their sources — a sample, not an audit; the pointer's real work
+  happens at edit time.
+- The root's *Session boundaries* section exists, one line per active duty, each pointing at a
+  procedure file that resolves; the deposited `VERSION_BASELINE.md` carries the check procedure,
+  both URLs, and the `Last checked` stamp — and where the folder runs integrity machinery, the
+  baseline is a sanctioned write target.
 - The meta folder exists with runbook + recorded profile + growth menu + version baseline; the
   maintenance loop works without this skill.
 
@@ -410,6 +548,17 @@ targeted upgrades only, and preserve hand-curated content everywhere. Include an
 audit**: flag live surfaces that read as baseline-plus-dated-patches and offer chapter-boundary
 rewrites (demote the narrative whole to its history home before trimming the live surface). The folder's recorded profile
 — not this skill's defaults — governs its posture unless the user says otherwise.
+
+**The monthly version check — retrofit.** Folders this skill builds carry the check inside
+`VERSION_BASELINE.md` (Phase 5) and run it themselves. A pre-existing SmartFolder does not — so in
+any session where this skill *is* invoked on one, do both halves: **run the check now** (the
+Phase 5 procedure, verbatim — throttle, three live-read versions, Offer A, the bridge ask,
+Offer B, the unreachable-and-empty rule), and **offer to deposit it** — the procedure and its
+three fields into the folder's `VERSION_BASELINE.md` (creating one via the baseline ladder if none
+exists), plus the trigger line in the root manual's *Session boundaries* section (creating that
+section if the root predates it). Deposited once, the folder self-checks monthly thereafter, this
+skill no longer required. A folder with no baseline and everything declined has nowhere to park
+the stamp, so the check may fire again the same month — accepted, not solved.
 
 ## Working style
 

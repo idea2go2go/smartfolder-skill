@@ -21,9 +21,9 @@ Operational guards:
 - macOS bundles (.oo3/.ooutline/.rtfd/.goodnotes/.webarchive/.key/.numbers/.pages/.more)
   AND companion data dirs (e.g. Audacity `Foo.aup` + `Foo_data/`) are atomic single
   documents: listed as one item, never recursed into.
-- Delete_Manually is a trash-staging area: one _README.md at its top, no recursion.
+- XX_DELETE_MANUALLY is a trash-staging area: one _README.md at its top, no recursion.
 - Never modify or delete archive files. Guides for folders that no longer qualify are
-  MOVED (not deleted) into <root>/Delete_Manually/pruned_guides_<stamp>/ with a
+  MOVED (not deleted) into <root>/XX_DELETE_MANUALLY/pruned_guides_<stamp>/ with a
   move-log.csv, so the change is fully reversible.
 
 Manual-edit protection (unchanged):
@@ -272,7 +272,7 @@ def scan(label, kind, path, rel, depth, path_label):
     has_summary = (f"{label}|{rel}" in SUMMARIES) if rel else False
 
     children = []
-    if rel != "Delete_Manually":          # never recurse into the trash staging tree
+    if rel != "XX_DELETE_MANUALLY":          # never recurse into the trash staging tree
         for d in subdirs_names:
             child_rel = d if rel == "" else f"{rel}/{d}"
             children.append(
@@ -405,7 +405,7 @@ AREA = {
         "A **staging area** for {child}'s items not yet filed into the archive. Contents "
         "here are provisional and awaiting a permanent home."
     ),
-    "Delete_Manually": (
+    "XX_DELETE_MANUALLY": (
         "A **staging area for deletion** — things the automated tools flagged but couldn't "
         "remove (duplicates, dropped files, empty leftovers, pruned filler guides). Safe to "
         "empty from Finder when ready. Nothing here is part of the live archive, so this "
@@ -537,7 +537,7 @@ def subdirs_block(node, linkable=True):
     if not names:
         return "_No subfolders; this is a leaf folder._"
 
-    if not linkable:   # Delete_Manually: shallow, non-indexed
+    if not linkable:   # XX_DELETE_MANUALLY: shallow, non-indexed
         note = "_Staging area — subfolders are not individually indexed._\n"
         lines = [f"### Subfolders ({len(names)}) — glance only\n", note]
         for d in names:
@@ -620,7 +620,7 @@ def render(node):
         "## For Claude / AI sessions",
         meta,
         files_block(node["files"]),
-        subdirs_block(node, linkable=(rel != "Delete_Manually")),
+        subdirs_block(node, linkable=(rel != "XX_DELETE_MANUALLY")),
     ]
     nb = notes_block(node)
     if nb:
@@ -646,7 +646,7 @@ def write_readme(target, body):
 
 
 def _staging_dir(root_path):
-    return os.path.join(root_path, "Delete_Manually", f"pruned_guides_{TODAY}")
+    return os.path.join(root_path, "XX_DELETE_MANUALLY", f"pruned_guides_{TODAY}")
 
 
 def prune_guide(node, root_path):
@@ -700,7 +700,7 @@ def apply_node(node, root_path):
     else:
         prune_guide(node, root_path)
 
-    if node["rel"] == "Delete_Manually":
+    if node["rel"] == "XX_DELETE_MANUALLY":
         return
     for c in node["children"]:
         apply_node(c, root_path)
@@ -744,7 +744,7 @@ def main():
     print(f"[{mode}]  as-of {TODAY}")
     print(f"created: {c}   refreshed: {r}   "
           f"skipped(edited): {len(se)}   skipped(no marker): {len(su)}")
-    print(f"pruned(filler guides moved to Delete_Manually): {len(pr)}   "
+    print(f"pruned(filler guides moved to XX_DELETE_MANUALLY): {len(pr)}   "
           f"prune-flagged(human-edited, left in place): {len(pf)}")
     for t in pf:
         print("  LEFT (human-edited, not pruned):", t)

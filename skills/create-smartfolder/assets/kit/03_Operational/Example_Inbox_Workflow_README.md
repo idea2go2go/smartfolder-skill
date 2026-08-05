@@ -1,4 +1,4 @@
-# XX_Assets-to-File — Inbox for new files
+# XX_INBOX — drop-off for new files
 *(Kit exemplar — a condensed sanctioned-intake workflow. The principle: ALL new content enters
 through the inbox, because filing is what produces correct naming, sidecars, index updates, and
 entity extraction; files placed directly into project folders rot the indexes. Scale the steps to

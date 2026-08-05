@@ -30,7 +30,7 @@ the build receipts live in **Capital Improvements**. A naming habit was kept con
 lead (like `20240611_...`), so files line up in order. Your hand-written **MASTER notes remain
 the heart of each system.**
 
-One housekeeping folder holds things set aside for you: **`XX_DELETE-MANUALLY`** — exact
+One housekeeping folder holds things set aside for you: **`XX_DELETE_MANUALLY`** — exact
 duplicates and empty folders, staged for *you* to delete once you've glanced at them. Nothing was
 permanently deleted; that is always left to you.
 
@@ -54,7 +54,7 @@ your notes, so the easy habit is to change them through your AI assistant, which
 summary in one motion — and if you edit a note directly, just mention it afterward so the summary
 catches up. Your notes remain the source of truth; nothing was added to or changed in them.
 
-**An inbox for anything new.** Drop new papers, emails, or photos into **`XX_ASSETS-TO-FILE`** and
+**An inbox for anything new.** Drop new papers, emails, or photos into **`XX_INBOX`** and
 tell your assistant — it files each item into the right folder and folds the new knowledge into
 that folder's summary. Saved email threads are especially valuable: formal documents say *what*
 was decided; your emails capture *how and why*.

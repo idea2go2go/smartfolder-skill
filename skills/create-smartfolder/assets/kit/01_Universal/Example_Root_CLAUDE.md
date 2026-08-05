@@ -39,18 +39,32 @@ first. Tiny/leaf folders are covered by the parent's guide; if a folder has none
 - macOS bundles (`.pages/.numbers/.key/.rtfd`) are atomic — never recurse into or write inside them.
 
 ## Deletion & staging
-Deletion is blocked here. Move anything to remove into **`XX_DELETE-MANUALLY/`** (the owner empties
+Deletion is blocked here. Move anything to remove into **`XX_DELETE_MANUALLY/`** (the owner empties
 it from Finder). Same for anything you'd overwrite: stage the old version, don't destroy it.
+Staged content never re-enters this folder's knowledge layer — not read, quoted, reconciled
+against, or restored from. One exception: keep a light `_README.md` manifest there, one line per
+staged item (what, when, why, where the surviving copy is), written when you stage. It is consulted
+only to answer questions about the disposal itself, and it resets when the owner empties the folder.
 
-## Inbox — `XX_ASSETS-TO-FILE/`
+## Inbox — `XX_INBOX/`
 The owner's drop-off for new items. When asked to process it, route each item to its folder and
 refresh that folder's `_Synthesis.md`. Clear items as they're filed.
 
+## Session boundaries (the start-and-end duties, grouped — one line each; detail lives where the line points)
+- **Session start:** after answering the first substantive request, if `XX_META/_manifests/last_check`
+  isn't today's date, offer the change check once (detail: *Change tracking*, below).
+- **Once a calendar month:** run the version check — procedure and `Last checked` stamp in
+  `XX_META/VERSION_BASELINE.md`. Current month already stamped → nothing to do.
+- **Before finishing:** close the loop (rules below).
+
+*A duty adopted later — a flags register, an integrity scan — adds one line here, never a rule
+elsewhere. Triggers live in this file because it is the one file guaranteed to be read; a duty
+parked anywhere else misses silently.*
+
 ## Change tracking — a casual tripwire (non-blocking)
 A watcher (`XX_META/smartfolder_watch.py`) catches files added or changed directly (not via the
-inbox). It never gates. Behavioral rule: answer the first substantive request normally, then check
-`XX_META/_manifests/last_check`; if it isn't today's date, offer once to run the daily check. Full
-procedure: `XX_META/Change_Tracking_Procedure.md`.
+inbox). It never gates; its session-start offer is the first line of *Session boundaries* above.
+Full procedure: `XX_META/Change_Tracking_Procedure.md`.
 
 ## Keeping live surfaces current (write forward, not backward)
 - A live surface (the Hub, the `_Synthesis.md` of a system still in service) leads with the
@@ -69,16 +83,20 @@ procedure: `XX_META/Change_Tracking_Procedure.md`.
   protocol has already put them in front of you.
 - Then check the decay conditions of the surfaces that sit outside any one work area's read path.
   Here that list is: **`_Willow_Operations_Hub.md`** (it makes claims about vendors, due dates, and
-  secret locations across every area).
+  secret locations across every area). A surface describing a state *outside this folder* — what a
+  contractor holds, what was filed with the county — would join this list by definition; none
+  exists today.
 - A refresh reconciles the **whole** surface against present state, not just the section you came
   for — patching one section is how a stale sentence survives a "refresh."
+- Point-in-time state (counts, versions, statuses) lives on dated surfaces, never in this file —
+  this manual states rules and points at state. A fact here that needs a date is in the wrong file.
 
 ## Top-level orientation (chapters — deeper levels route themselves)
 - **`_Willow_Operations_Hub.md`** — start here: maintenance calendar, vendor directory, sensitive-info map.
 - **House Systems** — HVAC, generator, well & water, security (each with a MASTER-seeded `_Synthesis.md`).
 - **Grounds** — garden, pond, fencing, equipment.
 - **Legal · Tax · Insurance** — ownership, coverage, filings.
-- **XX_META/** — method spec, recorded profile, change tracker, runbook (owner can ignore).
+- **XX_META/** — method spec, recorded profile, change tracker, version baseline, runbook (owner can ignore).
 
 ## Maintenance
 Refresh a folder's `_Synthesis.md` (and its as-of date) when its files change; update the Hub when a

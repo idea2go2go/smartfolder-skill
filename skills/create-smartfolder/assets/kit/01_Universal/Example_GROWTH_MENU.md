@@ -35,7 +35,7 @@ approves, implement it.** But never build unprompted, and never pitch in the abs
    Repeated pitching is proposal fatigue — the recurring form of over-machinery.
 
 **On the implementation pointers.** They name artifacts in the SmartFolder Skill kit, written
-against **v6.2.0**. The kit travels inside the `.skill` package deposited beside this menu as the
+against **v6.3.0**. The kit travels inside the `.skill` package deposited beside this menu as the
 version baseline — unpack it when a pointer is needed. **The artifact is the specification and
 this menu is only the index**: where they disagree, the artifact wins. A newer skill version is a
 newer *edition* of both — an input to the version-upgrade review, which the recorded profile
@@ -62,6 +62,7 @@ state first, rewritten at chapter boundaries rather than patched.
 | **Entity index** | Remembering who is involved in what | Names recur across many files and someone needs "everything touching X" | No exemplar | |
 | **Annotating vs enumerating guide** | Either a stale file map or an opaque folder | Enumerate where names can't speak for themselves; annotate where change velocity is high | `01_Universal/Example_README_Annotating.md`, `Example_README_Enumerating.md` | |
 | **Owner welcome guide** ("your records, made answerable") | A non-technical owner never learning what their folder can now do | A non-technical owner uses the folder — at handoff, or when one is invited in later | `01_Universal/Example_Owner_Guide.md`; deliver as a polished PDF at the root | |
+| **Session flags** (person-addressed register) | Cross-session asks and tells getting lost, manually re-raised, or bloating the root file | Several people use the folder and someone who won't be present until a future session needs to be told or asked something — *collaborative folders only; a single-writer folder is never shown this row* | `03_Operational/Example_SESSION_FLAGS.md` — the register holds all content and state; the root file carries only the trigger, and delivery wires to wherever the folder's session boundaries live | |
 
 ## Axis 2 — control machinery
 
@@ -114,7 +115,7 @@ the offer without record.
 
 ---
 
-*Provenance: adapted from the SmartFolder Skill kit exemplar (v6.2.0), filled in from this
+*Provenance: adapted from the SmartFolder Skill kit exemplar (v6.3.0), filled in from this
 folder's recorded profile as of the date above. Decays when: the skill version this folder is
 measured against changes, or any declined item's trigger fires. To refresh: ask your AI assistant
 to update this.*

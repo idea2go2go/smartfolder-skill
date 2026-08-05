@@ -2,9 +2,10 @@
 <!-- Created by Paul Hess (paul@hess.club) — questions and suggestions welcome. -->
 
 **What this is.** Working artifacts whose shapes and discipline come from three live SmartFolders
-(the prompt's three precedents), assembled [260706], extended [260728] (v6.2.0). The three Python
-scripts are working code; the sample configuration and the example content in their docstrings are
-invented. Every markdown
+(the prompt's three precedents), assembled [260706], extended [260728] (v6.2.0) and [260804]
+(v6.3.0). The three Python
+scripts (see the table below) are working code; the sample configuration and the example content in
+their docstrings are invented. Every markdown
 exemplar is **fictionalized** — real shapes and discipline, invented content — so the kit is safe to
 share.
 
@@ -40,6 +41,7 @@ root paths, folder-name conventions, and ignore-lists adapted to the target fold
 | `03_Operational/Example_STATUS_BOARD.md` | One-screen, per-row-dated status board | Status-dominant folders (live workstreams) |
 | `03_Operational/Example_DECISIONS.md` | Append-only dated decision log with sources | Decisions worth auditing later |
 | `03_Operational/Example_REVIEW_QUEUE.md` | Mute-and-record queue for flagged drift | Hard gate + multiple non-owner users |
+| `03_Operational/Example_SESSION_FLAGS.md` | Person-addressed notification register ("next time X is here, tell or ask them Y"): identity-matched delivery, headline-then-detail, delivery stamps, escalation | Several people use the folder across sessions — conditional on the writers-and-users dial showing collaborative use; never offered to single-writer folders |
 | `04_Generator/gen_readmes.py` + `GENERATOR_NOTES.md` | The archive precedent's working guide generator (verbatim — adapt its roots/thresholds) + the pattern it implements | Large trees (hundreds of folders) |
 
 ## Escalation logic, in one line each

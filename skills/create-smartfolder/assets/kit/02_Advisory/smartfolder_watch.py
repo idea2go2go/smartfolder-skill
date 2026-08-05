@@ -7,7 +7,7 @@
 smartfolder_watch.py - casual, non-blocking change-tracker for THIS SmartFolder (single-property).
 
 Self-contained: it lives in <PropertyRoot>/XX_META/ and watches the property folder it sits inside.
-Catches files ADDED or CHANGED directly in the folder (i.e. NOT dropped in XX_ASSETS-TO-FILE), so
+Catches files ADDED or CHANGED directly in the folder (i.e. NOT dropped in XX_INBOX), so
 they can be offered up for proper filing and the markdown summaries don't fall behind the repository.
 
 Two verbs (no property argument - it watches its own parent folder):
@@ -33,7 +33,7 @@ MANIFEST     = MANIFEST_DIR / "manifest.tsv"
 STAMP        = MANIFEST_DIR / "last_check"
 
 PRUNE_DIRS = {
-    "XX_META", "XX_ASSETS-TO-FILE", "XX_DELETE-MANUALLY",
+    "XX_META", "XX_INBOX", "XX_DELETE_MANUALLY",
     "_backups", "_manifests", "_data", ".git",
 }
 BUNDLE_EXTS = {".pages", ".numbers", ".key", ".rtfd", ".webarchive",
@@ -150,7 +150,7 @@ def do_check(daily=False):
     if n == 0:
         print(f"check {ROOT.name}: CLEAN - everything matches the baseline.")
         return 0
-    print(f"check {ROOT.name}: {n} finding(s). These did NOT come through XX_ASSETS-TO-FILE, so the "
+    print(f"check {ROOT.name}: {n} finding(s). These did NOT come through XX_INBOX, so the "
           f"summaries don't yet reflect them:")
     if added:
         print(f"\n  ADDED ({len(added)}):")

@@ -6,7 +6,7 @@
 """Filing integrity scanner for a shared, multi-writer deal workspace.
 
 Detects files added, removed, changed, or moved outside the normal
-XX_Assets-to-File inbox filing process.
+XX_INBOX filing process.
 
 Four modes:
   snapshot      Walk the project tree and write the manifest (the "known,
@@ -39,8 +39,8 @@ or pass --root explicitly):
 
 Design notes:
   - Manifest is a TSV: relative_path <TAB> size_bytes <TAB> sha1
-  - Excluded from tracking: XX_Assets-to-File/ (the inbox is expected to
-    churn), any _TO_DELETE_MANUALLY/ folder, hidden files/folders
+  - Excluded from tracking: XX_INBOX/ (the inbox is expected to
+    churn), any XX_DELETE_MANUALLY/ folder, hidden files/folders
     (.DS_Store etc.), macOS custom-folder-icon marker files ("Icon\r"),
     OS/app by-products (desktop.ini, Thumbs.db, "~$" lock/temp files),
     and the manifest itself. macOS bundle-package directories (.pages,
@@ -62,7 +62,7 @@ from pathlib import Path
 MANIFEST_NAME = "manifest.tsv"
 STAMP_NAME = "last_session_scan.txt"
 QUEUE_NAME = "REVIEW_QUEUE.md"
-EXCLUDED_DIRS = {"XX_Assets-to-File", "_TO_DELETE_MANUALLY", "__pycache__"}
+EXCLUDED_DIRS = {"XX_INBOX", "XX_DELETE_MANUALLY", "__pycache__"}
 # macOS custom-folder-icon marker files are literally named "Icon" + a trailing
 # carriage return ("Icon\r"). They carry a 0-byte data fork (the icon lives in
 # the resource fork) and reappear whenever a folder with a custom icon syncs,

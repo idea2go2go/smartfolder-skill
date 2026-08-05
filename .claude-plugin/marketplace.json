@@ -10,7 +10,7 @@
       "name": "create-smartfolder",
       "source": "./",
       "description": "A Claude skill that turns a folder into a collaboration knowledge base for you, your AI, and your humans.",
-      "version": "6.2.0",
+      "version": "6.3.0",
       "author": {
         "name": "Paul Hess"
       }
