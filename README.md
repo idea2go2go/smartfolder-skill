@@ -2,6 +2,8 @@
 
 **A Claude skill that turns a folder of files into a folder that explains itself.**
 
+[![Download the skill](https://img.shields.io/badge/Download%20the%20skill-latest%20release-2ea44f?style=for-the-badge)](https://github.com/idea2go2go/smartfolder-skill/releases/latest/download/SmartFolder-Skill.skill)
+
 ---
 
 Individual files contain data, but knowledge comes from synthesizing that data across files to tell
@@ -20,37 +22,31 @@ AI, and your human collaborators can all open and quickly understand without rea
 You, your AI, and your human collaborators can all work within and update the same folder, while the
 SmartFolder infrastructure continues to synthesize and update its knowledge layers. That knowledge
 lives in the folder itself, not in an ephemeral chat session where you have to re-explain everything
-to each new session. And not only your AI: for folders shared with other assistants, the skill
-deposits the operating manual as byte-identical `CLAUDE.md` and `AGENTS.md` files, each guarding the
-other — so Claude and every agent that reads the [`AGENTS.md`](https://agents.md) open format get
-the same instructions, and divergence is caught mechanically. Each participant, human or AI, starts with everything that is already known and
-leaves something useful for whoever comes next. Over time, the folder becomes the knowledge base
-instead of the conversation.
+to each new session. And not only your AI — the folder explains itself to other assistants too, in a
+format they already read. Each participant, human or AI, starts with everything that is already
+known and leaves something useful for whoever comes next. Over time, the folder becomes the
+knowledge base instead of the conversation.
 
 SmartFolders can be used for old archives, property and medical records, family paperwork, and other
 folders that have grown hard to navigate. But I also built it for active project work. You can
 browse the folder directly, work through an AI that understands it, or share it with other people
-and their AIs—for instance through Dropbox—without losing the common understanding that holds the
-work together. Your starting point can be a messy historical folder or an organized active project
-folder, large or small.
+and their AIs — for instance through Dropbox — without losing the common understanding that holds
+the work together. Your starting point can be a messy historical folder or an organized active
+project folder, large or small.
 
 Your original files are never edited or deleted. The skill works in careful stages, shows you its
 plan, and asks for approval before it moves or renames anything.
 
-## What's new in v6.2.0
-
-Works alongside the other AI assistants that work in folders — ChatGPT Work (tested), Gemini Spark,
-and the `AGENTS.md` ecosystem (Codex, Cursor, VS Code, supported GitHub Copilot surfaces) — via the
-twin root files described above. Plus: ask-first owner buy-in letters and a plain-language owner
-guide for handing a finished folder to someone non-technical; a deposited growth menu of what a
-folder could grow next; a version baseline so folders upgrade by comparison rather than guesswork;
-close-the-loop rules that keep the synthesis and status layer current as new information lands; a
-drift-disposition playbook for shared folders; and a feedback path for surfaces users invent.
-[Full notes on the release page.](https://github.com/idea2go2go/smartfolder-skill/releases)
-
 ## Install
 
-**Through the plugin marketplace (Claude Code):**
+**Claude desktop app / Cowork**
+
+[Download the skill](https://github.com/idea2go2go/smartfolder-skill/releases/latest/download/SmartFolder-Skill.skill),
+then open Claude → **Settings → Skills** and upload the file. `Readme.txt` in the
+[release](https://github.com/idea2go2go/smartfolder-skill/releases) covers this route in plain
+language.
+
+**Claude Code**
 
 ```
 /plugin marketplace add idea2go2go/smartfolder-skill
@@ -60,12 +56,6 @@ drift-disposition playbook for shared folders; and a feedback path for surfaces 
 Then `/reload-plugins`. Adding the marketplace registers the catalog; the second command installs.
 To receive later versions automatically, open `/plugin`, choose **Marketplaces**, select
 **smartfolder**, and enable auto-update.
-
-**By hand (Claude desktop app / Cowork):**
-
-Download the `.skill` file from
-[Releases](https://github.com/idea2go2go/smartfolder-skill/releases) and install it through Claude's
-skills settings. `Readme.txt` in the release covers that route in plain language.
 
 ## Use
 
@@ -77,6 +67,21 @@ further.
 A first conversion of a large folder can take a while and may span more than one session. That's
 normal. Afterwards, the folder maintains itself: ask Claude to *"file the new items"* or *"refresh
 the summaries"* whenever things change.
+
+## What's new in v6.2.0
+
+**Works alongside the other AI assistants that work in folders** — ChatGPT Work (tested), Gemini
+Spark, and the [`AGENTS.md`](https://agents.md) ecosystem (Codex, Cursor, VS Code, supported GitHub
+Copilot surfaces). The operating manual is written twice, byte-identical as `CLAUDE.md` and
+`AGENTS.md`, each copy guarding the other, so every assistant gets the same instructions and
+divergence is caught mechanically.
+
+Plus: ask-first owner buy-in letters and a plain-language owner guide for handing a finished folder
+to someone non-technical; a deposited growth menu of what a folder could grow next; a version
+baseline so folders upgrade by comparison rather than guesswork; close-the-loop rules that keep the
+synthesis and status layer current as new information lands; a drift-disposition playbook for shared
+folders; and a feedback path for surfaces users invent.
+[Full notes on the release page.](https://github.com/idea2go2go/smartfolder-skill/releases)
 
 ## More
 
