@@ -35,9 +35,12 @@ approves, implement it.** But never build unprompted, and never pitch in the abs
    Repeated pitching is proposal fatigue — the recurring form of over-machinery.
 
 **On the implementation pointers.** They name artifacts in the SmartFolder Skill kit, written
-against **v6.3.0**. The kit travels inside the `.skill` package deposited beside this menu as the
-version baseline — unpack it when a pointer is needed. **The artifact is the specification and
-this menu is only the index**: where they disagree, the artifact wins. A newer skill version is a
+against **v6.4.0**. The kit travels inside the `.skill` package deposited beside this menu as the
+version baseline — unpack it when a pointer is needed. **The artifact is the specification of what
+the surface is — never of what this folder's surface must be — and this menu is only the index**: where
+they disagree about what an artifact is, the artifact wins. **Before building any item from this
+menu, open the artifact it points to; then adapt it to this folder** — its work, its recorded
+profile, and its owner's say govern what is actually built. A newer skill version is a
 newer *edition* of both — an input to the version-upgrade review, which the recorded profile
 governs; it never overrides this folder's recorded decisions on its own. If the artifact is
 missing, the "what it is" column carries enough to act on — carefully, and say so.
@@ -115,7 +118,7 @@ the offer without record.
 
 ---
 
-*Provenance: adapted from the SmartFolder Skill kit exemplar (v6.3.0), filled in from this
+*Provenance: adapted from the SmartFolder Skill kit exemplar (v6.4.0), filled in from this
 folder's recorded profile as of the date above. Decays when: the skill version this folder is
 measured against changes, or any declined item's trigger fires. To refresh: ask your AI assistant
 to update this.*

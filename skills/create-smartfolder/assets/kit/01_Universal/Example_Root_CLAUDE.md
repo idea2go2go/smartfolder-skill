@@ -39,7 +39,7 @@ first. Tiny/leaf folders are covered by the parent's guide; if a folder has none
 - macOS bundles (`.pages/.numbers/.key/.rtfd`) are atomic — never recurse into or write inside them.
 
 ## Deletion & staging
-Deletion is blocked here. Move anything to remove into **`XX_DELETE_MANUALLY/`** (the owner empties
+Never delete. Move anything to remove into **`XX_DELETE_MANUALLY/`** (the owner empties
 it from Finder). Same for anything you'd overwrite: stage the old version, don't destroy it.
 Staged content never re-enters this folder's knowledge layer — not read, quoted, reconciled
 against, or restored from. One exception: keep a light `_README.md` manifest there, one line per

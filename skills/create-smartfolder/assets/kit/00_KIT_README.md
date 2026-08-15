@@ -2,8 +2,8 @@
 <!-- Created by Paul Hess (paul@hess.club) — questions and suggestions welcome. -->
 
 **What this is.** Working artifacts whose shapes and discipline come from three live SmartFolders
-(the prompt's three precedents), assembled [260706], extended [260728] (v6.2.0) and [260804]
-(v6.3.0). The three Python
+(the prompt's three precedents), assembled [260706], extended [260728] (v6.2.0), [260804]
+(v6.3.0), and [260813] (v6.4.0). The three Python
 scripts (see the table below) are working code; the sample configuration and the example content in
 their docstrings are invented. Every markdown
 exemplar is **fictionalized** — real shapes and discipline, invented content — so the kit is safe to
@@ -12,6 +12,10 @@ share.
 **Optional companion:** Paul's separate `data-owner-letter` skill turns an owner note like
 `01_Universal/Example_Owner_Letter.md` into a polished one-page PDF with color-coded breakout
 boxes. No dependency — the exemplar alone shows the shape.
+
+**The table below is an index, not a specification.** Its job is deciding *whether* an artifact is
+warranted; the "What it is" column is a one-line description, never a spec to build from. Before
+authoring any surface an exemplar models, open the exemplar itself — then:
 
 **License clause (repeated from the prompt, because it governs this kit too):** these are starting
 points to **adapt, never to transplant wholesale**. The diagnostic decides what a folder needs; an

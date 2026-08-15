@@ -59,9 +59,11 @@ move it back.
 
 ### REMOVED — a manifested file no longer present
 
-A person did this (assistant sandboxes typically cannot delete). Normal if it was staged into the
-manual-delete folder during a sanctioned cleanup; otherwise flag possible accidental loss, and
-flag any indexes or sidecars now pointing at nothing.
+Removed outside the sanctioned path. Normal if it was staged into the manual-delete folder during
+a sanctioned cleanup; otherwise flag possible accidental loss **regardless of who or what removed
+it** — attribute from evidence in the folder (the move log, the staging path), never from an
+inference about what an actor could have done — and flag any indexes or sidecars now pointing at
+nothing.
 
 ### After resolution
 

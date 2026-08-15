@@ -5,6 +5,45 @@ The skill turns a folder of files into a SmartFolder — a self-describing,
 self-maintaining knowledge layer over your real files. Install and docs:
 [README](README.md) · [Latest release](https://github.com/idea2go2go/smartfolder-skill/releases/latest)
 
+## v6.4.0 — 2026-08-15
+
+Six improvements, in plain terms:
+
+- **Session flags work with any assistant.** The person-addressed flags register
+  no longer assumes the assistant knows who is at the keyboard. Where it can't
+  tell, it says once — without interrupting your work — that flags are waiting
+  and for whom (including anyone a due hand-off falls to); tell it who you are
+  and it delivers yours. Nothing is marked delivered without a recorded basis for
+  who was present, flags can be raised without naming yourself, and the register
+  says plainly what it is: targeted for coordination, readable by anyone in the
+  folder.
+- **Checking for version updates is more bulletproof.** "You're up to date" is
+  now concluded only from the repository's canonical latest-release link, fetched
+  during that session — never from memory or a cached answer — and two tripwires
+  catch stale pages. A folder that repeatedly can't check says so once instead of
+  staying silent indefinitely. Folders built by earlier versions are offered the
+  same repair when the skill next works in them.
+- **Better separation of policy rules from environment-conditional rules.**
+  Policy rules — how a SmartFolder should always behave, like never-delete — are
+  stated as plain instructions, no longer resting on claims about what the
+  environment can't do. Rules that genuinely depend on your environment name the
+  condition and say what happens either way. The build's final check sweeps for
+  rules that blur the two.
+- **The Growth Menu opens the worked example first.** A session building a
+  capability from the folder's Growth Menu must open the kit's worked example
+  before writing anything — the one-line menu description is an index, not a
+  specification — and then adapt it freely to your needs, saying where it
+  departed and why.
+- **A `SmartFolder` name suffix.** Added a suggestion, at close-out, to append
+  `SmartFolder` to the name of your converted folders — `Acme Consulting
+  SmartFolder` — so a built folder is recognizable from a file browser, a backup
+  job, or a folder list. The rename is the owner's, with both steps spelled out
+  (rename, then re-point the assistant's folder reference); an assistant that can
+  do it safely may offer to.
+- **Links to my recommended Markdown readers.** The owner guide and this
+  repository now point at [Marked](https://markedapp.com) on a Mac and
+  [MDHero](https://mdhero.app) on Windows; any equivalent works.
+
 ## v6.3.0 — 2026-08-05
 
 Five improvements, in plain terms:

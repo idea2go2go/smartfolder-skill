@@ -63,8 +63,10 @@ was decided; your emails capture *how and why*.
 
 Open the Operations Hub for "what's due / who do I call," or any folder's `_Synthesis.md` for that
 system's story; check the **As of** date at the top to see how current it is. These files are
-Markdown (`.md`) — plain text that any editor opens, but far nicer in a Markdown reader (on a Mac,
-Marked; on Windows, Typora). The summaries help most exactly when you're in a hurry — a vendor on
+Markdown (`.md`) — plain text that any editor opens, but far nicer in a lightweight Markdown
+reader — on a Mac, [Marked](https://markedapp.com); on Windows, [MDHero](https://mdhero.app); any
+equivalent works. The summaries help most
+exactly when you're in a hurry — a vendor on
 the phone, something leaking.
 
 ### 4. Using it through your AI assistant (the powerful way)

@@ -68,20 +68,24 @@ A first conversion of a large folder can take a while and may span more than one
 normal. Afterwards, the folder maintains itself: ask Claude to *"file the new items"* or *"refresh
 the summaries"* whenever things change.
 
-## What's new in v6.3.0
+**Reading the folder yourself:** the guides and summaries are Markdown (`.md`) — plain text that
+any editor opens, but far nicer in a lightweight Markdown reader — on a Mac,
+[Marked](https://markedapp.com); on Windows, [MDHero](https://mdhero.app); any equivalent works.
 
-**Folders now check for their own updates.** Every new SmartFolder is built carrying the check
-inside it, so the folder looks after itself and this skill needn't be installed for that to work.
-About once a month a session working in the folder compares what you have against the latest
-release, says in plain language what changed, and offers to fetch it. Installing stays in your
-hands. An offline folder carries on and tries again later.
+## What's new in v6.4.0
 
-Plus: knowledge summaries that stay current even when the work that dated them happened elsewhere
-in your SmartFolder; session flags - flag issues or questions for other members to address; a
-one-line record of everything in the discard pile, so emptying it is never an act of blind trust;
-and clearer names for the two housekeeping folders. First bug fix: the tool that writes the folder
-guides didn't recognize the discard folder, so it wrote guides inside it instead of leaving it
-alone.
+**Session flags now work with any assistant.** Flags — questions or heads-ups addressed to a
+specific person in a shared folder — no longer assume the assistant knows who is at the keyboard.
+If it can't tell, it mentions once that flags are waiting and for whom, then gets on with your
+work; tell it who you are and it delivers yours. Flags are targeted, not private: they route to the
+right person for coordination, and anyone with folder access can read them.
+
+Plus: made checking for version updates more bulletproof; better separation between policy rules
+(how a SmartFolder should always behave) vs rules that are conditional to the environment you are
+running; before building a capability from the Growth Menu, the kit's worked example is opened
+first — then adapted freely to your needs; added a suggestion to append `SmartFolder` to the name
+of your converted folders; and added links to my recommended Markdown readers —
+[Marked](https://markedapp.com) on a Mac, [MDHero](https://mdhero.app) on Windows.
 
 [Full notes on the release page.](https://github.com/idea2go2go/smartfolder-skill/releases/latest)
 Every version's story is in [CHANGELOG.md](CHANGELOG.md).
