@@ -3,7 +3,7 @@
 
 **What this is.** Working artifacts whose shapes and discipline come from three live SmartFolders
 (the prompt's three precedents), assembled [260706], extended [260728] (v6.2.0), [260804]
-(v6.3.0), and [260813] (v6.4.0). The three Python
+(v6.3.0), [260813] (v6.4.0), and [260815] (v6.5.0). The three Python
 scripts (see the table below) are working code; the sample configuration and the example content in
 their docstrings are invented. Every markdown
 exemplar is **fictionalized** — real shapes and discipline, invented content — so the kit is safe to
@@ -12,6 +12,11 @@ share.
 **Optional companion:** Paul's separate `data-owner-letter` skill turns an owner note like
 `01_Universal/Example_Owner_Letter.md` into a polished one-page PDF with color-coded breakout
 boxes. No dependency — the exemplar alone shows the shape.
+
+**Kit vs. references — opposite fates.** Everything in this kit exists to be **adapted and
+deposited into the user's folder**; the package's separate top-level `references/` folder is the
+opposite — files the skill itself reads on demand and **never deposits**. Nothing from
+`references/` belongs in a built folder.
 
 **The table below is an index, not a specification.** Its job is deciding *whether* an artifact is
 warranted; the "What it is" column is a one-line description, never a spec to build from. Before
@@ -32,6 +37,7 @@ root paths, folder-name conventions, and ignore-lists adapted to the target fold
 | `01_Universal/Example_Synthesis.md` | Model `_Synthesis.md` with provenance, decay, breadcrumb | Any folder whose whole exceeds its parts |
 | `01_Universal/Example_Sidecar_Summary.md` | Per-file cache digest with last-mile pointers | Expensive-to-read files consulted repeatedly |
 | `01_Universal/Example_GROWTH_MENU.md` | Two-axis menu (derived surfaces + control machinery) of what a finished folder could grow, with triggers, pointers, offer protocol, and declined log | Always — Phase 5 deposits an adapted copy in the meta folder |
+| `01_Universal/Example_VERSION_BASELINE.md` | The deposited version baseline: the recorded package fields plus the complete monthly version check, carried in the deposit so any session runs it from the folder alone | Always — Phase 5 deposits one in the meta folder beside the `.skill` package |
 | `01_Universal/Example_Owner_Letter.md` | Warm one-page ask-first note before touching an owner's files (models the PDF letter shape) | The folder holds files of an owner not driving the build — at build time, or later via the growth menu |
 | `01_Universal/Example_Owner_Guide.md` | The welcome counterpart: a "your records, made answerable" root introduction handed to the owner after the build (models the PDF guide shape) | A non-technical owner will use the folder; deliver as a polished PDF at the root |
 | `02_Advisory/smartfolder_watch.py` | Non-blocking change tripwire (size/mtime/hash hybrid) | Humans edit files directly; advisory posture |
@@ -46,6 +52,7 @@ root paths, folder-name conventions, and ignore-lists adapted to the target fold
 | `03_Operational/Example_DECISIONS.md` | Append-only dated decision log with sources | Decisions worth auditing later |
 | `03_Operational/Example_REVIEW_QUEUE.md` | Mute-and-record queue for flagged drift | Hard gate + multiple non-owner users |
 | `03_Operational/Example_SESSION_FLAGS.md` | Person-addressed notification register ("next time X is here, tell or ask them Y"): identity-matched delivery, headline-then-detail, delivery stamps, escalation | Several people use the folder across sessions — conditional on the writers-and-users dial showing collaborative use; never offered to single-writer folders |
+| `03_Operational/Example_Thread_Master.md` + `Example_Thread_Master_Summary.md` | Thread master + digest pair for conversations a recurring capture path keeps fragmenting: an append-only raw master (join keys, absorbed-fragment ledger, freeze/revive lifecycle) plus its write-forward sidecar — **a pair, ship both** | Capture-fed folders only — a recurring capture path (connector sweep, scheduled export, forwarded emails) and one exchange already split across files |
 | `04_Generator/gen_readmes.py` + `GENERATOR_NOTES.md` | The archive precedent's working guide generator (verbatim — adapt its roots/thresholds) + the pattern it implements | Large trees (hundreds of folders) |
 
 ## Escalation logic, in one line each

@@ -68,30 +68,32 @@ A first conversion of a large folder can take a while and may span more than one
 normal. Afterwards, the folder maintains itself: ask Claude to *"file the new items"* or *"refresh
 the summaries"* whenever things change.
 
-**Reading the folder yourself:** the guides and summaries are Markdown (`.md`) — plain text that
-any editor opens, but far nicer in a lightweight Markdown reader — on a Mac,
-[Marked](https://markedapp.com); on Windows, [MDHero](https://mdhero.app); any equivalent works.
+**Get a Markdown reader.** The guides and summaries are `.md` files. Conventional editors open
+them as cluttered plain text — the formatting that makes them fast to scan only appears in a
+Markdown reader, and it changes how usable the folder feels. Recommendations under *More*.
 
-## What's new in v6.4.0
+## What's new in v6.5.0
 
-**Session flags now work with any assistant.** Flags — questions or heads-ups addressed to a
-specific person in a shared folder — no longer assume the assistant knows who is at the keyboard.
-If it can't tell, it mentions once that flags are waiting and for whom, then gets on with your
-work; tell it who you are and it delivers yours. Flags are targeted, not private: they route to the
-right person for coordination, and anyone with folder access can read them.
+**Threaded knowledge — email and chat chains — now gets one home.** With the new **thread
+masters** convention, saved email files or connector sweeps of emails, chats, or apps appear in
+one file with a well-organized sidecar summary and status, rather than lots of fragmented files
+with redundant chain information. Every absorbed fragment is ledgered, so nothing is lost.
 
-Plus: made checking for version updates more bulletproof; better separation between policy rules
-(how a SmartFolder should always behave) vs rules that are conditional to the environment you are
-running; before building a capability from the Growth Menu, the kit's worked example is opened
-first — then adapted freely to your needs; added a suggestion to append `SmartFolder` to the name
-of your converted folders; and added links to my recommended Markdown readers —
-[Marked](https://markedapp.com) on a Mac, [MDHero](https://mdhero.app) on Windows.
+Plus: you no longer need to know this skill exists to benefit from it — ask Claude to *"organize
+this folder"* without saying how, and it looks at what's there first, then offers a choice (build
+the full self-describing folder, or just the tidying; if you already said how, it simply does
+that, no offer); the always-loaded instructions got about 20% leaner, deliberately paired with
+that wider trigger so casual requests stay cheap; and the kit gains a complete worked example of
+the folder's version-baseline file, now home to the monthly update check.
 
 [Full notes on the release page.](https://github.com/idea2go2go/smartfolder-skill/releases/latest)
 Every version's story is in [CHANGELOG.md](CHANGELOG.md).
 
 ## More
 
+- **A Markdown reader** — the guides and summaries are `.md`; a lightweight reader makes them far
+  nicer to read than a plain editor does. On a Mac, [Marked](https://markedapp.com); on Windows,
+  [MDHero](https://mdhero.app); any equivalent works.
 - **[SKILL.md](skills/create-smartfolder/SKILL.md)** — the whole method, readable without
   installing anything: the diagnostic, the tier model, three worked precedents, the build phases.
 - **[The kit](skills/create-smartfolder/assets/kit/)** — a kit of working artifacts to adapt,

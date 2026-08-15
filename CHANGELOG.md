@@ -5,6 +5,32 @@ The skill turns a folder of files into a SmartFolder — a self-describing,
 self-maintaining knowledge layer over your real files. Install and docs:
 [README](README.md) · [Latest release](https://github.com/idea2go2go/smartfolder-skill/releases/latest)
 
+## v6.5.0 — 2026-08-15
+
+Four improvements, led by a new home for threaded knowledge:
+
+- **Thread masters, for folders fed by ongoing conversations.** Saved email
+  files or connector sweeps of emails, chats, or apps now appear in one running
+  master file with a well-organized sidecar summary and status, rather than
+  lots of fragmented files with redundant chain information. Offered only to
+  folders with that intake pattern; every absorbed fragment is ledgered, so
+  nothing is lost.
+- **The skill offers itself where it would help.** Ask Claude to *"organize
+  this folder"* — without saying how — and the skill now wakes up, looks at
+  what's actually there, and offers a choice: build the full self-describing
+  folder, or just do the tidying you asked for. Nothing extra is built without
+  your say-so. A request that already supplies its own scheme ("rename these to
+  YYMMDD") is simply done, with no offer.
+- **Leaner instructions, same method.** The version history and the
+  existing-folder upgrade procedure moved out of the always-loaded instructions
+  into reference files the skill reads only when needed — about 20% lighter,
+  under a standing size budget so it stays that way. Deliberately paired with
+  the wider trigger above, so casual requests stay cheap.
+- **A worked example of the folder's version-baseline file.** The file every
+  SmartFolder keeps about which skill version built it now has a complete
+  canonical example in the kit — including the full monthly update check, which
+  now lives there — so folders built by different sessions come out consistent.
+
 ## v6.4.0 — 2026-08-15
 
 Six improvements, in plain terms:

@@ -37,7 +37,9 @@ note the alias), not as new entities; flag if unsure.
 
 **3. Route each file with the folder's filing decision tree** (the canonical copy lives in the root
 `CLAUDE.md`), then confirm destinations, any new-folder proposals, and sidecar choices with the user
-via structured questions before moving anything.
+via structured questions before moving anything. In a capture-fed folder, a file carrying thread
+content merges into its live thread master rather than filing beside it — where no such convention
+exists yet, see the growth menu's thread-master row (`Example_Thread_Master.md`).
 
 **4. Rename to convention and move.** Move, don't copy — a filed file should no longer exist in the
 inbox. Follow the folder's naming rules, including any chronological-prefix exception for
