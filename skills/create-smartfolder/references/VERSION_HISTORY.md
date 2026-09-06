@@ -6,6 +6,31 @@ keeps the current version and a one-line what's-new. The repository `CHANGELOG.m
 github.com/idea2go2go/smartfolder-skill carries the same story in plain language for the public
 channel.*
 
+**v6.6.0 — [260826].** The version baseline streamlines — record always (version, build date,
+applied-beyond, repository URL), the `.skill` archive deposited only when already in hand, and
+procurement removed whole: the four-rung ladder and the reconstruction concept are gone, because
+they assumed a binary-fetch capability most environments lack, and the deposited Offer A gains
+the false branch it was missing — a fetch returning nothing hands over the permanent URL (RM-27;
+partially supersedes RM-5/RM-23 machinery; the monthly check is untouched). Cloud-sync
+collaboration guidance: collaborators sharing a SmartFolder over Dropbox, Google Drive, or
+similar must make it fully available offline, per collaborator machine — stated in the
+diagnostic, a Phase-1 caution, the owner guide, and a growth-menu carrier for folders that begin
+cloud-sharing after build (RM-25). An opt-in developer-feedback channel: an anonymized,
+statistics-heavy usage email offered at build close-out and at 1/3/12 months then every 12,
+composed only on acceptance — never unasked — from the kit's new Example_Feedback_Email.md, with
+the milestone schedule riding the deposited monthly check (RM-26). Phase 5's maintenance
+procedures restated: the deposit is the procedures, consolidated in a runbook by default,
+distribution licensed with the arrangement recorded in the recorded profile (RM-28). Phase 5's
+deposit specification moves whole to references/DEPOSIT_SPEC.md behind a gateway stub — read
+completely before authoring, reopened on session resume (PD-26). Every finished folder now
+retains the complete kit, byte-for-byte, as a stable-named readable Kit/ subtree in its meta
+home — the growth menu's implementation library, so exemplar pointers and the feedback procedure
+resolve locally with no package, installed skill, or network; an improvement on the original
+design, whose pointers resolved into a zip that silently assumed unpack capability (RM-30;
+exclusions run toward the kit, never into it). And the release procedure
+gains a kit-against-itself consistency check, workspace-side — nothing new in the package
+(RM-29).
+
 **v6.5.0 — [260815].** Thread masters for capture-fed folders: a conditional growth-menu row
 plus a fictionalized master-and-sidecar exemplar pair, for conversations a recurring capture path
 keeps fragmenting — one master plus digest per ongoing exchange (RM-17). The trigger widens so a

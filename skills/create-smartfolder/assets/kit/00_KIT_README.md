@@ -3,7 +3,7 @@
 
 **What this is.** Working artifacts whose shapes and discipline come from three live SmartFolders
 (the prompt's three precedents), assembled [260706], extended [260728] (v6.2.0), [260804]
-(v6.3.0), [260813] (v6.4.0), and [260815] (v6.5.0). The three Python
+(v6.3.0), [260813] (v6.4.0), [260815] (v6.5.0), and [260826] (v6.6.0). The three Python
 scripts (see the table below) are working code; the sample configuration and the example content in
 their docstrings are invented. Every markdown
 exemplar is **fictionalized** — real shapes and discipline, invented content — so the kit is safe to
@@ -18,6 +18,14 @@ deposited into the user's folder**; the package's separate top-level `references
 opposite — files the skill itself reads on demand and **never deposits**. Nothing from
 `references/` belongs in a built folder.
 
+**Two destinations, one kit.** Artifacts here are adapted into the folder proper at build — and
+the kit is **also retained whole**, byte-for-byte, as a stable-named subtree (`Kit/`) in every
+finished folder's meta home: the growth menu's implementation library, so later-life sessions
+open exemplars with no package, installed skill, or network. The retained copy is an immutable
+reference — open and adapt out, never edit or execute in place — its version stamped in the
+deposited `VERSION_BASELINE.md` and in this file's own assembled-line above, never in the
+directory name.
+
 **The table below is an index, not a specification.** Its job is deciding *whether* an artifact is
 warranted; the "What it is" column is a one-line description, never a spec to build from. Before
 authoring any surface an exemplar models, open the exemplar itself — then:
@@ -25,7 +33,9 @@ authoring any surface an exemplar models, open the exemplar itself — then:
 **License clause (repeated from the prompt, because it governs this kit too):** these are starting
 points to **adapt, never to transplant wholesale**. The diagnostic decides what a folder needs; an
 artifact from a strict operational folder is over-engineering in a quiet archive. Scripts need their
-root paths, folder-name conventions, and ignore-lists adapted to the target folder before first use.
+root paths, folder-name conventions, and ignore-lists adapted to the target folder before first use
+(the retained `Kit/` subtree belongs on every ignore-list, and its deposit is sanctioned or
+blessed where a manifest runs).
 
 ## What's here, and when each artifact is warranted
 
@@ -38,6 +48,7 @@ root paths, folder-name conventions, and ignore-lists adapted to the target fold
 | `01_Universal/Example_Sidecar_Summary.md` | Per-file cache digest with last-mile pointers | Expensive-to-read files consulted repeatedly |
 | `01_Universal/Example_GROWTH_MENU.md` | Two-axis menu (derived surfaces + control machinery) of what a finished folder could grow, with triggers, pointers, offer protocol, and declined log | Always — Phase 5 deposits an adapted copy in the meta folder |
 | `01_Universal/Example_VERSION_BASELINE.md` | The deposited version baseline: the recorded package fields plus the complete monthly version check, carried in the deposit so any session runs it from the folder alone | Always — Phase 5 deposits one in the meta folder beside the `.skill` package |
+| `01_Universal/Example_Feedback_Email.md` | The developer-feedback draft: an anonymized, statistics-heavy usage email composed **only on the owner's acceptance** — offered at build close-out and on the milestone schedule the deposited `VERSION_BASELINE.md` carries — for the owner to review and send | Always in the kit; a folder's own draft exists only after an accepted offer (nothing is ever composed unasked or sent by the skill) |
 | `01_Universal/Example_Owner_Letter.md` | Warm one-page ask-first note before touching an owner's files (models the PDF letter shape) | The folder holds files of an owner not driving the build — at build time, or later via the growth menu |
 | `01_Universal/Example_Owner_Guide.md` | The welcome counterpart: a "your records, made answerable" root introduction handed to the owner after the build (models the PDF guide shape) | A non-technical owner will use the folder; deliver as a polished PDF at the root |
 | `02_Advisory/smartfolder_watch.py` | Non-blocking change tripwire (size/mtime/hash hybrid) | Humans edit files directly; advisory posture |

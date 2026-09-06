@@ -6,19 +6,32 @@ description: "Turn a folder hierarchy into a SmartFolder — a tiered navigation
 <!--
   ============================================================
   SmartFolder Skill — a skill for building SmartFolders.
-  Version: v6.5.0 — last changed [260815].
-  v6.5.0: thread masters for capture-fed folders (RM-17); the
-  trigger widens to plain organize requests, with an explicit
-  offer before any commitment (RM-22); conditional and
-  historical content moves to references/ (RM-24); the
-  deposited version check re-homed into the kit's new
-  Example_VERSION_BASELINE.md (RM-23).
+  Version: v6.6.0 — last changed [260826].
+  v6.6.0: the version baseline streamlines — record always,
+  archive when in hand, never procure — and the deposited
+  Offer A gains its missing false branch (RM-27); cloud-sync
+  collaboration guidance — offline availability, per
+  collaborator machine (RM-25); an opt-in anonymized
+  developer-feedback email, offered at build close-out and
+  on a milestone schedule, composed only on acceptance
+  (RM-26); the maintenance-procedures deposit restated —
+  runbook as default, not mandate (RM-28); Phase 5's deposit
+  spec moves to references/DEPOSIT_SPEC.md (PD-26); a
+  kit-consistency check joins the release procedure,
+  workspace-side, nothing in this package (RM-29); and every
+  finished folder retains the whole kit byte-for-byte as a
+  readable Kit/ subtree in its meta home, so the growth menu
+  and feedback procedure resolve locally with no package,
+  skill, or network (RM-30).
   Full version history: references/VERSION_HISTORY.md (in this
   package; read on demand, never deposited) and CHANGELOG.md
   at github.com/idea2go2go/smartfolder-skill.
-  Line budget: this file stays under 550 lines, standing —
-  asserted at each release's verification; exceeding it owes
-  a disclosure move (to references/ or the kit) before ship.
+  Line budget: 550 lines is a soft hygiene tripwire, not a
+  cap — this file divides by task coherence (bounded task
+  manuals live in references/), never to shed lines for
+  their own sake; crossing 550 triggers a deliberate
+  refer-out rethink. Line and word counts are reported at
+  each release's verification.
   Created by Paul Hess (paul@hess.club).
   If you have questions, suggestions, or problems using this
   skill, please contact Paul at paul@hess.club.
@@ -33,7 +46,7 @@ description: "Turn a folder hierarchy into a SmartFolder — a tiered navigation
   ============================================================
 -->
 
-# SmartFolder Skill (v6.5.0)
+# SmartFolder Skill (v6.6.0)
 
 Turn the target folder into a **SmartFolder**: a self-maintaining navigation-and-knowledge layer
 over the real files, so the user, other people, and future Claude sessions can operate in it with
@@ -57,8 +70,9 @@ ending at a review gate.
 **Two kinds of bundled content, never to be confused.** `assets/kit/` is the **kit**: working
 exemplars and scripts that get **adapted and deposited into the user's folder** (Phase 5).
 Top-level `references/` is the opposite — files **this skill reads on demand when a branch fires
-and never deposits**: `references/UPGRADE_PATH.md` (the full existing-SmartFolder upgrade path)
-and `references/VERSION_HISTORY.md` (the full changelog). Nothing from `references/` ever lands
+and never deposits**: `references/DEPOSIT_SPEC.md` (the complete Phase-5 deposit specification),
+`references/UPGRADE_PATH.md` (the full existing-SmartFolder upgrade path), and
+`references/VERSION_HISTORY.md` (the full changelog). Nothing from `references/` ever lands
 in a built folder.
 
 ## Non-negotiables (safety — these override everything else)
@@ -223,7 +237,12 @@ Phase-1 exploration, and by asking (AskUserQuestion works well here). The dials:
    here, tell or ask them Y," whose content and state live entirely in the register while the
    root file carries only the trigger. Collaborative folders only — a single-writer folder is
    never shown it; the deposited growth menu carries the same conditional row forward, so a
-   folder that grows into multi-user life can reach it later.
+   folder that grows into multi-user life can reach it later. And where the folder is shared over
+   a cloud-sync service, state the offline-availability requirement here, while the multi-writer
+   arrangement is being designed: **every collaborator's machine** must hold the folder offline —
+   "Make Available Offline" (Dropbox), offline access (Google Drive), or the service's
+   equivalent — or that person's sessions read placeholders. A per-machine setting, never a
+   one-time folder setting.
 2. **Change velocity.** Archival (rarely changes), slow-drip, or live and fast-moving?
 3. **Dominant question type.** What will people mostly ask here — *navigation* ("where is X?"),
    *wisdom* ("how does this work? what matters? what's due?"), or *status* ("where do things
@@ -320,7 +339,11 @@ file-type mix, the naming/date conventions actually in use (they may differ per 
 detected conventions rather than imposing one rule everywhere). Detect existing instruction files
 (`CLAUDE.md`, READMEs, `AGENTS.md`, `.claude/`) → route to the upgrade path. Flag oddities that
 change the plan: problem characters, no-extension legacy files, scanned PDFs with no text layer,
-locked files, mislabeled files. Note synthesis candidates — folders whose files together tell a
+locked files, mislabeled files. On a cloud-synced path (Dropbox, Google Drive, or similar), reads
+that stall, fail, or return empty content usually mean online-only placeholders, not broken files
+— name the fix rather than diagnosing file-by-file: the folder needs "Make Available Offline"
+(Dropbox), offline access (Google Drive), or the service's equivalent, set per machine. Note
+synthesis candidates — folders whose files together tell a
 story — and folders that are mere piles of like items (no greater whole; skip).
 
 **The front-door gate — after the look, before any commitment.** When this skill fired on a plain
@@ -352,127 +375,25 @@ markers so re-runs preserve human edits; hand-written guides just carry their as
 writing on small ones. At scale, fan out parallel sub-agents on disjoint scopes with their own move
 logs and required integrity reports; keep judgment calls and shared-file writes single-threaded.
 
-**Phase 5 — Deposit the infrastructure.** The SmartFolder must be self-contained:
-- The root **`CLAUDE.md`** containing: what this SmartFolder is; the navigation protocol and descent
-  rule; the freshness/precedence rules; the refresh and write-forward rules; the close-the-loop
-  rules below; a grouped **Session boundaries** section (below); the conventions; a thin top-level
-  orientation (the only thing the root enumerates — one line per chapter); a short maintenance note
-  pointing to the runbook. Write prescriptive content dateless and present-tense; write descriptive
-  content (orientation, state) with as-of dates. **A deposited rule states what to do.** Where it
-  genuinely depends on a capability, name the capability as a **condition** and say what happens
-  without it — never let a capability claim stand as the **reason** for a rule that applies
-  regardless. A rule silent about the environment differing fails in one of two directions: a
-  guarantee quietly lost where the claim is false, or a conditional quietly hardened into a
-  prohibition by the session that met the false branch first. The kit's `Example_Root_CLAUDE.md` models the
-  *shape*, not the contents. Dual profile: deposit `CLAUDE.md` and `AGENTS.md` byte-identical, each
-  carrying the reciprocal instruction. (Bonus, not guarantee: current Claude Code strips HTML
-  comments from `CLAUDE.md` at injection, so maintainer notes there can be context-free; don't
-  rely on it elsewhere, and never in dual folders.)
-- **Close the loop — four deposited rules** (≤12 root-file lines; procedure detail goes in the
-  runbook). *Locality:* before finishing, update the derived surfaces in the folders you worked
-  in. The navigation protocol has already put them in front of you, but state the rule anyway — a
-  session editing by absolute path gets no protection from the side effect. *The distant-surface
-  list:* then check the decay conditions of the named surfaces that sit outside every work area's
-  read path. Build the list with the **distant test** — does this surface make claims about
-  material that does not sit beside it? — applied to the **entire surface inventory** this phase
-  just built, and re-applied whenever a surface is added later. A surface describing an **external
-  state** — what is published, what is installed, what a counterparty holds — is distant **by
-  definition**: it is falsified by acts performed entirely elsewhere, so no work area's read path
-  ever surfaces it. The list names **surfaces, never events**: each surface's own decay condition
-  remains the single source of truth for whether it fired; the root list only supplies awareness
-  that the surface exists. Folders where nothing fails the distant test get the two sentences and
-  no list. *Reconcile whole:* a refresh reconciles the entire surface against present state, not
-  just the section you came for — patching one section is how a stale sentence survives a
-  "refresh." Reconcile-whole keeps a surface accurate; it never asks whether a sentence is
-  warranted — that is the next rule's job. *State stays out of prescriptive files* — and this rule
-  takes priority: **removal beats annotation**. Point-in-time state — versions, counts, item
-  lists, statuses — lives on dated status surfaces; a prescriptive file states identity and rules
-  and **points at** its state; the root manual in particular never restates what a status surface
-  owns. A stale figure in a dateless file is invisible to every decay mechanism above — the root
-  manual is the worst case, since it auto-loads into every session and survives compaction. The
-  constants that cannot move out (a README describing its own contents, a baseline recording a
-  version) carry a **source pointer** to where the truth is checkable — "three scripts (see the
-  table below)" — which does its real work at edit time, putting the check in front of whoever
-  rewrites the sentence. Annotate only what could not be removed. Once state has moved out, the
-  root file's residual dated content is its as-of line and orientation table, which its
-  close-the-loop wording names. Do not build an event-indexed obligation table ("if X happened,
-  update Y") — that is a central index by another name, and it silently rots when a surface's
-  decay condition changes. Where the closeout *hangs* — which machinery, if any, runs it at
-  session end — is settled once by the session-boundary prompt below; the deposited wording cites
-  that answer rather than restating it.
-- **The session-boundary prompt — asked once, of every folder:** *where do this folder's session
-  boundaries live?* That is: which machinery, if any, marks session start and session end. Wire
-  **both bookends** to the answer — delivery of any person-addressed surface (the session-flags
-  register, where adopted) hangs at session start; the close-the-loop pass hangs at session end.
-  The answer is whatever the folder already runs: the integrity gate's session-start mode if it
-  runs one, the change watcher's sweep if that is all it has, root-file prose alone if it runs
-  nothing. A folder with no machinery gets no machinery — the floor answer is exactly the status
-  quo. **The prompt's deposit is the root manual's *Session boundaries* section** — every boundary
-  duty grouped in one place, one line per duty, each pointing at its owning procedure file: the
-  integrity scan where one runs, delivery of the flags register where adopted, the monthly version
-  check (its procedure lives in the deposited `VERSION_BASELINE.md`), and the close-the-loop pass. Triggers live here because the root manual is the
-  one file guaranteed to be in context — a duty that depends on a session remembering to open some
-  other file misses silently — while procedure detail stays in the files each line points to.
-  Where the flags register is adopted, its trigger line notes that delivery is **identity-gated
-  and non-blocking**: no established identity → announce addressees once and hold content, per the
-  register's own rules. A
-  duty adopted later, from the growth menu or otherwise, **adds a line to this section rather than
-  a rule elsewhere.**
-- The **runbook** (how to refresh guides and syntheses, perform a
-  chapter-boundary rewrite — seal the arc, rewrite state-first — add a chapter, handle intake,
-  close a task — local surfaces, then the distant list via each surface's own decay condition,
-  then the root-files parity check where the dual profile applies — run the version-upgrade
-  review below, and re-verify — everything maintenance needs without this skill), the **recorded
-  profile** (the dial settings and rationale from Phase 2, so future sessions inherit the design
-  intent instead of re-deriving it), any adapted kit scripts and the generator if one was built,
-  move logs, and the backup manifest.
-- The **growth menu** (`GROWTH_MENU.md`, adapted from the kit's exemplar): the two-axis menu —
-  derived surfaces and control machinery, allocated by different rules — of what this folder could
-  grow later, with trigger heuristics, implementation pointers into the deposited kit (the artifact
-  is the specification of what the surface is — never of what this folder's surface must be; the
-  menu is only the index), the offer protocol, a considered-and-declined
-  log, and the "invent freely" close carrying the developer feedback offer. The deposited intake
-  procedure (or the sweep flow where no inbox exists) gains one step: when a **concrete, named
-  pattern** in the current filings suggests a missing surface, consult the menu and offer it in one
-  line ("three filings this month touch the easement — want a tracker?"). The menu is for building
-  from, not just consulting — trigger fired, user approved, implement it. Never build unprompted or
-  pitch in the abstract; declined ideas are logged and not re-offered until circumstances
-  materially change. **Zero new lines in the root file** — the menu is on-demand meta content.
-- The **version baseline**: deposit the **`.skill` zip itself** — the package this build ran from —
-  in the meta folder beside a stamped **`VERSION_BASELINE.md`** recording which release built the
-  folder and which roadmap items, if any, were applied beyond it. The zip, not the unpacked
-  payload: unpacked, `SKILL.md` is hundreds of lines of imperative build instructions a browsing
-  session might start applying to a folder that is already built; zipped it is inert to casual
-  reading and still fully diffable. When the running copy is an installed skill rather than a
-  user-visible archive, work down this ladder and record which rung was used: (1) the exact source
-  `.skill` archive, when available; (2) with the user's approval, the matching version's release
-  asset from the skill's public repository (github.com/idea2go2go/smartfolder-skill → Releases) —
-  the authoritative published artifact, recorded with source URL and hash; (3) repackage the
-  installed payload byte-for-byte and stamp the baseline **reconstructed**, with file count and
-  hash; (4) never fabricate — if no rung is reachable, ask the user for the package.
-  **Author the deposited `VERSION_BASELINE.md` per the kit's `Example_VERSION_BASELINE.md`,
-  opened first.** It records version, route (original / fetched / reconstructed), file count, and
-  hash — and **the exemplar carries the monthly version check complete** (both repository URLs,
-  the `Last checked: YYYY-MM` stamp, the throttle and evidence rules), so the deposit specifies
-  the check and any ordinary session runs it from the folder alone, this skill nowhere in the
-  loop. The root manual carries only the check's trigger line in *Session boundaries*. **"Any
-  session" is scoped by the folder's agent-population profile:** single-agent → the trigger lives
-  in `CLAUDE.md` and Claude sessions run the check; dual profile → every assistant reading either
-  root twin sees the same trigger; a non-Claude assistant joining a single-agent folder's life
-  later is a **dial change**, routed through the upgrade review. **The stamp is a write:** in a
-  folder running a manifest or drift detector, list `VERSION_BASELINE.md` as a sanctioned write
-  target at deposit time, or the check fires an integrity finding every month.
-  The runbook gains the **version-upgrade review**: unpack
-  baseline and new release → diff `SKILL.md` (non-negotiables, invariant core, dials, phases,
-  verification) and `diff -rq` the kits → classify each delta (new invariant → probably adopt; new
-  optional surface or machinery → a growth-menu question subject to its triggers, never an
-  automatic yes; changed convention → only where it does not fight the folder's established
-  tradition) → audit and **recommend, changing nothing** → on approval apply, update the recorded
-  profile, log contested decisions, re-verify → re-stamp the baseline and retire the old artifact.
-  **A newer skill is a newer opinion, not an authority over a folder already in use** — the
-  recorded profile governs unless the owner says otherwise. Exception: where the folder's own
-  subject matter *is* the skill, deposit a stamped pointer to the local copy rather than a
-  duplicate that can silently drift.
+**Phase 5 — Deposit the infrastructure.** The SmartFolder must be self-contained: after this
+phase, maintenance never needs this skill. **Read `references/DEPOSIT_SPEC.md` — the complete
+deposit specification, bundled in this package — in full before authoring any deposit, and reopen
+it whenever Phase 5 resumes after a session boundary** (this stub survives compaction; the
+reference does not). The list below is the index, never the spec:
+- the root **`CLAUDE.md`** — and its byte-identical **`AGENTS.md`** twin in the dual profile;
+- the four **close-the-loop** rules;
+- the **session-boundary prompt** and the root manual's *Session boundaries* section;
+- the **maintenance procedures** — consolidated in a runbook by default, distribution licensed
+  with the arrangement recorded in the recorded profile;
+- the **recorded profile**, any **adapted kit scripts** and generator, **move logs**, and the
+  **backup manifest**;
+- the **growth menu**;
+- the **retained kit** — the whole of `assets/kit/`, byte-for-byte, a stable-named readable
+  subtree in the meta home: the menu's implementation library;
+- the **version baseline** — recorded always; the `.skill` package deposited when already in
+  hand, never procured — carrying the monthly version check;
+- the **developer-feedback offer** at build close-out, composed only on acceptance;
+- the **version-upgrade review**, deposited among the maintenance procedures.
 
 **Phase 6 — Verify.**
 - Coverage invariant: every meaningful folder has a `_README.md` or is explicitly covered by its
@@ -505,8 +426,13 @@ logs and required integrity reports; keep judgment calls and shared-file writes 
   procedure file that resolves; the deposited `VERSION_BASELINE.md` carries the check procedure,
   both URLs, and the `Last checked` stamp — and where the folder runs integrity machinery, the
   baseline is a sanctioned write target.
-- The meta folder exists with runbook + recorded profile + growth menu + version baseline; the
-  maintenance loop works without this skill.
+- The **maintenance procedures exist and are findable where the recorded profile says** (a
+  consolidated runbook, in most folders); the meta folder holds the recorded profile, growth
+  menu, version baseline, and retained kit; the maintenance loop works without this skill.
+- The retained kit is **byte-identical to this package's `assets/kit/`**, carries no generated
+  guides, sidecars, or syntheses inside it, sits on the drift machinery's ignore-list where any
+  runs, and **every growth-menu pointer naming a kit artifact resolves into it** — no package,
+  installed skill, or network required.
 
 **At close-out, once — the outer-name suggestion** *(an offer, deliberately not a verification
 check — nothing about it is checkable, and a check that always passes trains people to ignore the
@@ -542,5 +468,6 @@ folder's recorded profile — not this skill's defaults — governs unless the u
 
 Use a task list; keep updates concise; show samples before mass-applying; ask before underspecified
 work. When new content arrives later, any session should be able to run maintenance from the
-deposited runbook — add guides for new folders, refresh stale guides and syntheses while preserving
+deposited procedures (the runbook, in most folders) — add guides for new folders, refresh stale
+guides and syntheses while preserving
 manual edits, and re-run the verification steps — without this skill installed.

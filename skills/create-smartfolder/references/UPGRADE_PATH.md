@@ -4,10 +4,12 @@
 deposited into a user's folder. `SKILL.md`'s *Existing SmartFolders* stub routes here; the
 non-negotiables and the invariant core bind on this path exactly as on a fresh build.*
 
-When Phase 1 finds scaffolding already present: read its root file, runbook, and recorded profile
+When Phase 1 finds scaffolding already present: read its root file, maintenance procedures (the
+runbook, in most folders), and recorded profile
 first; treat the folder's established conventions as its tradition (move-don't-rename legacy names;
 apply conventions to newly named files). Where the meta folder carries a version baseline, run the
-runbook's version-upgrade review — a version-against-version diff beats guesswork. Otherwise diff
+folder's deposited version-upgrade review — a version-against-version diff beats guesswork. *(The
+review spec deposited into new folders lives in `references/DEPOSIT_SPEC.md`, §10.)* Otherwise diff
 what exists against the invariant core, propose
 targeted upgrades only, and preserve hand-curated content everywhere. Include an **accretion
 audit**: flag live surfaces that read as baseline-plus-dated-patches and offer chapter-boundary
@@ -24,8 +26,9 @@ delta never fights a convention the folder deliberately holds.
 - **The monthly version check.** A pre-existing folder without the check: **run it now** (the
   procedure as the kit's `Example_VERSION_BASELINE.md` carries it — throttle, three live-read
   versions, Offer A, the bridge ask, Offer B, the unreachable-and-empty rule) and **offer to
-  deposit it** — a `VERSION_BASELINE.md` authored per that exemplar, opened first (creating a
-  baseline via the baseline ladder if none exists), plus the trigger line in the root manual's
+  deposit it** — a `VERSION_BASELINE.md` authored per that exemplar, opened first (recording the
+  baseline fields — version, build date, applied-beyond, repository URL — as best the folder's
+  own records establish them, if no baseline exists), plus the trigger line in the root manual's
   *Session boundaries* section (creating that section if the root predates it). Deposited once,
   the folder self-checks monthly thereafter, this skill no longer required. A folder with no
   baseline and everything declined has nowhere to park the stamp, so the check may fire again the
@@ -39,6 +42,31 @@ delta never fights a convention the folder deliberately holds.
   or to fail silently forever — which is this defect rebuilt one generation later, in the folders
   the retrofit exists to save. A check reading a stale index concludes "you are current" wrongly,
   silently, and indefinitely.
+- **The streamlined version baseline (v6.6.0).** A baseline deposited by an earlier release may
+  carry the four-rung procurement ladder, a **reconstructed** route stamp, or an open flag asking
+  someone to procure or rebuild the package. Offer the streamlined shape: the recorded fields —
+  version, build date, applied-beyond, repository URL — are the whole baseline where no package
+  is in hand; nothing is fetched, repackaged, reconstructed, or asked for. **Close or reword any
+  open procurement or reconstruction flag** so it no longer reads as an actionable item — in most
+  environments it never was one — and **existing deposited archives stay; never delete.** In the
+  same pass: **Offer A as v6.5.0 deposited it has no false branch** for a fetch returning
+  nothing, which is what the fetch does in most environments — offer the current exemplar's form,
+  which hands over the permanent URL when the fetch comes back empty.
+- **The retained kit (v6.6.0).** A folder built before v6.6.0 has no retained kit — its growth
+  menu points into a deposited zip (which silently assumed unpack capability) or, where the
+  package was never in hand, at artifacts it does not possess. Offer to deposit the retained kit
+  **from this bundle's own `assets/kit/`** — whole, byte-for-byte, a stable-named `Kit/` subtree
+  in the meta home — re-basing the deposited growth menu's pointer paragraph to it and recording
+  the version in the baseline. Where drift machinery runs, add the subtree to its ignore-list
+  and sanction or bless the deposit **in the same pass**, or the machinery reports every kit
+  file as a finding the next day. Existing deposited archives stay (never delete); never
+  extract from staged discards.
+- **A deposited upgrade review that compares only `SKILL.md` and the kits** (every folder built
+  before v6.6.0). Offer the widened comparison the current deposit carries: `SKILL.md`, **the
+  whole of `references/`**, and the kits — since v6.6.0 the deposit specification and the upgrade
+  path live in `references/`, so a review that never opens that folder can register a new
+  version number and miss the changed instruction behind it. One sentence in the folder's
+  maintenance procedures; nothing else changes.
 - **Rules resting on capability claims.** Where a deposited rule states a capability as its
   *reason* ("deletion is blocked here"), offer the policy-first rewording ("never delete") —
   Phase 6's finder-plus-judgment sweep is the tool, and it must not fire on genuine preconditions

@@ -34,9 +34,13 @@ approves, implement it.** But never build unprompted, and never pitch in the abs
 4. If declined: **log it below** and do not re-offer until circumstances materially change.
    Repeated pitching is proposal fatigue — the recurring form of over-machinery.
 
-**On the implementation pointers.** They name artifacts in the SmartFolder Skill kit, written
-against **v6.5.0**. The kit travels inside the `.skill` package deposited beside this menu as the
-version baseline — unpack it when a pointer is needed. **The artifact is the specification of what
+**On the implementation pointers.** They name artifacts in the **retained kit** — the complete,
+byte-for-byte copy of the SmartFolder Skill kit (**v6.6.0**) deposited in this folder's meta
+home as the stable-named `Kit/` subtree. **Every "Build from" path below resolves under that
+subtree** (`Kit/01_Universal/…`, `Kit/03_Operational/…`), directly readable — no package, no
+installed skill, no network, no unpacking. The retained kit is an immutable reference: open an
+artifact and adapt it *out* into this folder; never edit or execute it in place. **The artifact
+is the specification of what
 the surface is — never of what this folder's surface must be — and this menu is only the index**: where
 they disagree about what an artifact is, the artifact wins. **Before building any item from this
 menu, open the artifact it points to; then adapt it to this folder** — its work, its recorded
@@ -88,6 +92,13 @@ above a folder's needs trains people to ignore the system.
 | **Review queue** | Mute-and-record: flagged drift is muted for colleagues and queued for the maintainer, so nobody is nagged and nothing is lost | A detector exists *and* people other than the maintainer meet its findings | `03_Operational/Example_REVIEW_QUEUE.md` | |
 | **Owner buy-in note** | A warm, ask-first one-page note before reorganizing, merging, or renaming files someone else added — so nothing seems to vanish on them *(a social courtesy, not machinery — listed here because its trigger is shaped like the others')* | The folder starts holding files of a person who is not driving the build: an owner invited in to participate directly, a colleague dropping in their own material | `01_Universal/Example_Owner_Letter.md` (optional companion: the separate `data-owner-letter` skill renders it as a polished PDF) | |
 
+**A later-life transition worth watching for — the folder begins cloud-sharing after build.**
+Telltales: the folder path now sits under a sync service's directory, sync-service cruft appears
+(`Icon\r`, conflicted copies), or reads stall or return empty placeholders. The guidance, stated
+once to every collaborator: set the folder **fully available offline on each machine** — "Make
+Available Offline" (Dropbox), offline access (Google Drive), or the service's equivalent.
+Guidance, not machinery — nothing to build; state it and move on.
+
 **Two hazards worth knowing before building the detectors** (full detail:
 `Example_Drift_Disposition_Matrix.md`): `snapshot` blesses *everything* currently on disk, so
 never use it to mute one item — that is `bless-file`'s job; and sync-provider hydration lag can
@@ -119,7 +130,7 @@ the offer without record.
 
 ---
 
-*Provenance: adapted from the SmartFolder Skill kit exemplar (v6.5.0), filled in from this
+*Provenance: adapted from the SmartFolder Skill kit exemplar (v6.6.0), filled in from this
 folder's recorded profile as of the date above. Decays when: the skill version this folder is
 measured against changes, or any declined item's trigger fires. To refresh: ask your AI assistant
 to update this.*

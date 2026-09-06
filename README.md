@@ -72,19 +72,22 @@ the summaries"* whenever things change.
 them as cluttered plain text — the formatting that makes them fast to scan only appears in a
 Markdown reader, and it changes how usable the folder feels. Recommendations under *More*.
 
-## What's new in v6.5.0
+## What's new in v6.6.0
 
-**Threaded knowledge — email and chat chains — now gets one home.** With the new **thread
-masters** convention, saved email files or connector sweeps of emails, chats, or apps appear in
-one file with a well-organized sidecar summary and status, rather than lots of fragmented files
-with redundant chain information. Every absorbed fragment is ledgered, so nothing is lost.
+**Sharing a SmartFolder through Dropbox, Google Drive, or a similar service now comes with the one
+setting that makes it work.** Everyone sharing the folder makes it fully available offline on their
+own machine — otherwise the files on that machine are placeholders, and an assistant reading them
+stalls or comes up empty. The skill now says so wherever it matters: in the design questions, at
+first exploration, in the owner guide, and later on for folders that only begin being shared after
+they are built.
 
-Plus: you no longer need to know this skill exists to benefit from it — ask Claude to *"organize
-this folder"* without saying how, and it looks at what's there first, then offers a choice (build
-the full self-describing folder, or just the tidying; if you already said how, it simply does
-that, no offer); the always-loaded instructions got about 20% leaner, deliberately paired with
-that wider trigger so casual requests stay cheap; and the kit gains a complete worked example of
-the folder's version-baseline file, now home to the monthly update check.
+Plus: simpler version record-keeping — a folder always records which release built it, keeps the
+skill package only when one is already at hand, and the update offer hands you the download link
+when a fetch comes back empty instead of trying to rebuild it; an opt-in, anonymized feedback
+channel — offered at the end of a build and a few times a year after, counts and patterns only,
+composed only if you say yes, sent only by you; and every folder now keeps its own copy of the
+kit's example library, so it can go on growing years from now with no package, no installed skill,
+and no network.
 
 [Full notes on the release page.](https://github.com/idea2go2go/smartfolder-skill/releases/latest)
 Every version's story is in [CHANGELOG.md](CHANGELOG.md).

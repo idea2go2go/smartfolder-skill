@@ -77,7 +77,16 @@ replaced the loop pump — update the HVAC summary"*), and new documents (*"Draf
 of the insurance coverage for our accountant"*). **The one habit worth forming: when something
 changes, mention it — a sentence is enough.** That's what keeps the archive self-maintaining.
 
-### 5. Worth your eye
+### 5. If you share these folders through a sync service
+
+If this folder lives in Dropbox, Google Drive, or a similar service and someone else shares it
+with you, one setting matters more than any other: each person should make the folder **fully
+available offline on their own computer** — "Make Available Offline" in Dropbox, offline access
+in Google Drive, or your service's equivalent. Without it, the files on that person's machine are
+placeholders, and an AI assistant reading them stalls or comes up empty. It's a **per-computer**
+setting, not a folder setting — each of you sets it once, on yours.
+
+### 6. Worth your eye
 
 A short list of things that surfaced while reading everything — none emergencies, some
 time-sensitive. For example: *the newest insurance declarations on file are from 2023 — current
@@ -90,6 +99,11 @@ The folders now do three things they didn't before: **summarize themselves**, **
 coming due**, and **answer questions** — through the files directly, or by just asking. When
 something changes, mention it to your assistant — that one habit keeps everything else up to date.
 
+One more thing your assistant may ask, occasionally — a month, a few months, a year from now:
+whether you'd like to send the skill's developer an anonymized snapshot of how this folder is
+shaped (counts and patterns only — never contents, names, or subject matter). Nothing is composed
+unless you say yes, and you review and send it yourself.
+
 *Questions, or want a summary expanded? Just ask.*
 
 ---
@@ -98,5 +112,7 @@ something changes, mention it to your assistant — that one habit keeps everyth
 contents and the owner's actual open items; every example above must be replaced, never
 transplanted. Substance that survives adaptation: nothing thrown away and originals untouched; the
 summaries-first reading habit; the as-of date habit; the inbox; the one-sentence-update habit; a
-"worth your eye" list only if the build genuinely surfaced items. Tone to the least technical
+"worth your eye" list only if the build genuinely surfaced items. **Section 5 is conditional —
+ship it only where the folder actually lives on a sync service**, naming that service first; the
+feedback sentence at the close travels with every guide. Tone to the least technical
 reader, warm, zero jargon.)*

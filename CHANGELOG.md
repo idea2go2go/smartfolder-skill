@@ -5,6 +5,52 @@ The skill turns a folder of files into a SmartFolder — a self-describing,
 self-maintaining knowledge layer over your real files. Install and docs:
 [README](README.md) · [Latest release](https://github.com/idea2go2go/smartfolder-skill/releases/latest)
 
+## v6.6.0 — 2026-09-05
+
+Six improvements, led by guidance for shared cloud folders:
+
+- **Advice for shared cloud folders.** Everyone sharing a SmartFolder through
+  Dropbox, Google Drive, or a similar service makes it fully available offline
+  on their own machine — otherwise the files on that machine are placeholders,
+  and an assistant reading them stalls or comes up empty. The skill now says so
+  wherever it matters: in the design questions, at first exploration, in the
+  owner guide, and in the growth menu for folders that begin being shared after
+  they are built.
+- **Simpler version record-keeping.** A folder always records which release
+  built it, when, and where the skill lives on the web; the skill package itself
+  is kept only when one is already at hand. The machinery that tried to download
+  or rebuild a missing package is gone — it assumed abilities most assistant
+  setups don't have — and the deposited update offer now says what to do when a
+  download comes back empty: it hands you the link.
+- **An opt-in way to help the developer.** At the end of a build, then a month,
+  three months, and a year in, and yearly after that, Claude may ask whether
+  you'd like to send an anonymized snapshot of your folder's shape — counts and
+  patterns only, never contents or names. Nothing is composed unless you say
+  yes, it takes a few minutes only if you agree, you review and send it
+  yourself, and the offer works even when the folder can't reach the internet.
+  New kit exemplar: `Example_Feedback_Email.md`.
+- **Every folder keeps its own example library.** A complete, byte-for-byte copy
+  of the kit — the worked examples every future capability is built from — is now
+  retained as a readable `Kit/` subtree in each finished folder's maintenance
+  area. The growth menu and the feedback procedure above resolve to it directly,
+  so a SmartFolder can go on growing years from now with no package, no installed
+  skill, and no network. It is never counted as your content and the folder's
+  drift machinery ignores it. Folders built by earlier versions are offered the
+  same copy the next time the skill works in them.
+- **Maintenance procedures, not a mandated file.** A folder's maintenance
+  procedures are consolidated in a runbook by default, but a folder whose
+  machinery owns its own procedures may keep them there, with the arrangement
+  recorded — the procedures are what matter, not the container.
+- **A consistency check on the kit itself.** The release procedure now compares
+  the kit against its own naming conventions — canonical and retired names,
+  near-variants, bare guide names — closing the gap that let a mismatched
+  folder name ship twice. Workspace tooling; nothing new in the package.
+
+Under the hood: the build instructions for what gets deposited into a folder
+moved into a reference file the skill reads only when depositing, so sessions
+load less at once; and a folder's own version-upgrade review now compares the
+reference files too, not only the main instructions and the kit.
+
 ## v6.5.0 — 2026-08-15
 
 Four improvements, led by a new home for threaded knowledge:
