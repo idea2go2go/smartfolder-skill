@@ -22,10 +22,11 @@ AI, and your human collaborators can all open and quickly understand without rea
 You, your AI, and your human collaborators can all work within and update the same folder, while the
 SmartFolder infrastructure continues to synthesize and update its knowledge layers. That knowledge
 lives in the folder itself, not in an ephemeral chat session where you have to re-explain everything
-to each new session. And not only your AI — the folder explains itself to other assistants too, in a
-format they already read. Each participant, human or AI, starts with everything that is already
-known and leaves something useful for whoever comes next. Over time, the folder becomes the
-knowledge base instead of the conversation.
+to each new session. You need Claude to build a SmartFolder, but once built it works with Claude,
+ChatGPT, or any LLM that can follow a CLAUDE.md or AGENTS.md file — or fake it well. Each
+participant, human or AI, starts with everything that is already known and leaves something useful
+for whoever comes next. Over time, the folder becomes the knowledge base instead of the
+conversation.
 
 SmartFolders can be used for old archives, property and medical records, family paperwork, and other
 folders that have grown hard to navigate. But I also built it for active project work. You can
