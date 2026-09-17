@@ -23,7 +23,7 @@ You, your AI, and your human collaborators can all work within and update the sa
 SmartFolder infrastructure continues to synthesize and update its knowledge layers. That knowledge
 lives in the folder itself, not in an ephemeral chat session where you have to re-explain everything
 to each new session. You need Claude to build a SmartFolder, but once built it works with Claude,
-ChatGPT, or any LLM that can follow a CLAUDE.md or AGENTS.md file — or fake it well. Each
+ChatGPT, or any LLM that can follow a CLAUDE.md or AGENTS.md file, or that can fake it! Each
 participant, human or AI, starts with everything that is already known and leaves something useful
 for whoever comes next. Over time, the folder becomes the knowledge base instead of the
 conversation.
