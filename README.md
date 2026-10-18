@@ -73,22 +73,20 @@ the summaries"* whenever things change.
 them as cluttered plain text — the formatting that makes them fast to scan only appears in a
 Markdown reader, and it changes how usable the folder feels. Recommendations under *More*.
 
-## What's new in v6.6.0
+## What's new in v6.7.0
 
-**Sharing a SmartFolder through Dropbox, Google Drive, or a similar service now comes with the one
-setting that makes it work.** Everyone sharing the folder makes it fully available offline on their
-own machine — otherwise the files on that machine are placeholders, and an assistant reading them
-stalls or comes up empty. The skill now says so wherever it matters: in the design questions, at
-first exploration, in the owner guide, and later on for folders that only begin being shared after
-they are built.
+**Cross-platform teams, and individuals who work from both a Mac and a Windows PC, now have
+changes tracked consistently between the two platforms, despite their different file naming
+and path conventions.** An existing baseline heals itself the next time it is read, so there
+is nothing to redo.
 
-Plus: simpler version record-keeping — a folder always records which release built it, keeps the
-skill package only when one is already at hand, and the update offer hands you the download link
-when a fetch comes back empty instead of trying to rebuild it; an opt-in, anonymized feedback
-channel — offered at the end of a build and a few times a year after, counts and patterns only,
-composed only if you say yes, sent only by you; and every folder now keeps its own copy of the
-kit's example library, so it can go on growing years from now with no package, no installed skill,
-and no network.
+Plus: a sweep for quiet threads, so a SmartFolder that keeps email or chat threads as running
+thread files does a better job of keeping active threads alive and inactive ones frozen and
+digested as "historical", with the status free to move back and forth as circumstances
+change; flags placed in output instead of thought stream, so a flag left for a colleague
+arrives in the assistant's actual reply and comes back every session until it is answered;
+and State Forward summaries, which tell you exactly where things stand and then provide
+details and actionable knowledge, instead of a chronology of how you got there.
 
 [Full notes on the release page.](https://github.com/idea2go2go/smartfolder-skill/releases/latest)
 Every version's story is in [CHANGELOG.md](CHANGELOG.md).

@@ -96,7 +96,8 @@ content, per the register's own rules. A duty adopted later, from the growth men
 ## 4. The maintenance procedures — a runbook by default
 
 The deposit is **the maintenance procedures**: how to refresh guides and syntheses, perform a
-chapter-boundary rewrite (seal the arc, rewrite state-first), add a chapter, handle intake, close
+chapter-boundary rewrite (seal the arc, rewrite state-first — the *State Forward* discipline,
+`SKILL.md`'s *Write forward, not backward*), add a chapter, handle intake, close
 a task (local surfaces, then the distant list via each surface's own decay condition, then the
 root-files parity check where the dual profile applies), run the version-upgrade review (§10), and
 re-verify — everything maintenance needs without this skill. **Consolidated in a runbook by
@@ -185,8 +186,8 @@ local copy rather than a duplicate that can silently drift.
 
 ## 9. The developer-feedback offer
 
-At build close-out, **offer — never compose unasked**, in roughly this wording, adapted to the
-folder: *"The developer of this skill has requested that you optionally provide statistics on the
+At build close-out, **offer — never compose unasked** — in the session's **final answer** (a
+mid-turn mention does not count), in roughly this wording, adapted to the folder: *"The developer of this skill has requested that you optionally provide statistics on the
 SmartFolder that we just built. I can create an anonymized file for you to review and send to him
 if you wish. Depending on your repository size, this could take 5 to 10 minutes."* The time
 sentence stays — consent is informed by the cost. **Only on a yes:** compose the draft from the
@@ -199,9 +200,10 @@ has been sent*). **The skill and its deposits never send anything; the owner rev
 The offer re-fires at 1, 3, and 12 months after build, then every 12 months thereafter — the
 schedule rides the deposited monthly version check, **evaluated at every check attempt,
 delivered or not** (an unreachable repository never silences a milestone; the network's answer
-is irrelevant to a birthday), and stamped at each firing in the check's feedback-offers log (the
-exemplar carries the step and the log; no new machinery, no new root-file lines). Offered once per milestone; a decline stamps the firing and never suppresses
-the next milestone; an explicit *"never ask again"* goes to the growth menu's
+is irrelevant to a birthday), and logged at each firing in the check's feedback-offers log (the
+exemplar carries the step and the log; no new machinery, no new root-file lines). Offered once per
+milestone, in the session's final answer, and logged only when the final answer carried it; a
+decline is logged and never suppresses the next milestone; an explicit *"never ask again"* goes to the growth menu's
 considered-and-declined log and ends the schedule.
 
 ## 10. The version-upgrade review

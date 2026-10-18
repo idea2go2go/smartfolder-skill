@@ -5,6 +5,54 @@ The skill turns a folder of files into a SmartFolder — a self-describing,
 self-maintaining knowledge layer over your real files. Install and docs:
 [README](README.md) · [Latest release](https://github.com/idea2go2go/smartfolder-skill/releases/latest)
 
+## v6.7.0 — 2026-10-18
+
+Four improvements, led by consistent change tracking across Mac and Windows:
+
+- **Mac+Windows change tracking** (RM-34). Cross-platform teams, and
+  individuals who work from both a Mac and a Windows PC, now have changes
+  tracked consistently between the two platforms, despite their different
+  file naming and path conventions. The scripts record one form of each
+  file's name on every platform, and an existing baseline heals itself the
+  next time it is read, so there is nothing to redo. The daily change check
+  records its last run every time it runs, and Windows housekeeping files
+  are ignored like the Mac ones already were. SmartFolders built by earlier
+  versions are offered the fix, applied to their own copy of each script.
+- **A sweep for quiet threads** (RM-33). If your SmartFolder keeps email or
+  chat threads as running thread files, the system will now do a better job
+  of keeping active threads alive and inactive threads frozen and digested
+  as "historical". The filing pass ends with a sweep that lists every live
+  thread by how long it has been quiet and proposes freezing the ones past
+  your SmartFolder's threshold (14 days to start; yours to change). As
+  always, the status can move back and forth as circumstances change.
+- **Flags placed in output instead of thought stream** (RM-32). In a
+  SmartFolder several people share, a flag left for a colleague now arrives
+  in the assistant's actual reply, where it is read, rather than in the
+  running commentary some apps fold away. An unanswered flag comes back
+  every session until it is answered, and is recorded as delivered only
+  when it was placed in the reply. The occasional feedback offer every
+  SmartFolder carries follows the same rule.
+- **State Forward summaries** (RM-31). Synthesis and summary files now do an
+  even better job of being written in a "state forward" manner, telling you
+  exactly where things stand and then providing details and actionable
+  knowledge. Prior summaries often became a tedious chronology of how you
+  got there, instead of summarizing the state and looking forward to what
+  to do with that knowledge. The rule now carries that name, State Forward.
+
+Under the hood: the growth menu's integrity-gate row now names the script's
+real commands; the release procedure checks command names in the kit's own
+prose, and runs both scripts under Python 3.9 against a cross-platform
+fixture whenever either changes. Workspace tooling; nothing new in the
+package.
+
+Corrected at the release gate before shipping: the thread sweep reads
+dates only from message headings (a date in a thread's title or a section
+heading no longer hides an overdue thread) and decodes 1990s dates as the
+1990s; the flag rule says which delivery counts on each route (the reply
+for a person in the session; the sent message for an unattended run); and
+the feedback-offer rule in every new SmartFolder's version record carries
+the same condition as the deposit instructions.
+
 ## v6.6.0 — 2026-09-05
 
 Six improvements, led by guidance for shared cloud folders:

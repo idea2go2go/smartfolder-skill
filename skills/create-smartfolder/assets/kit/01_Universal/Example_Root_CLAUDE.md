@@ -52,7 +52,8 @@ refresh that folder's `_Synthesis.md`. Clear items as they're filed.
 
 ## Session boundaries (the start-and-end duties, grouped — one line each; detail lives where the line points)
 - **Session start:** after answering the first substantive request, if `XX_META/_manifests/last_check`
-  isn't today's date, offer the change check once (detail: *Change tracking*, below).
+  isn't today's date, offer once to run `XX_META/smartfolder_watch.py check --daily` (detail:
+  *Change tracking*, below).
 - **Once a calendar month:** run the version check — procedure and `Last checked` stamp in
   `XX_META/VERSION_BASELINE.md`. Current month already stamped → nothing to do.
 - **Before finishing:** close the loop (rules below).
@@ -66,15 +67,21 @@ A watcher (`XX_META/smartfolder_watch.py`) catches files added or changed direct
 inbox). It never gates; its session-start offer is the first line of *Session boundaries* above.
 Full procedure: `XX_META/Change_Tracking_Procedure.md`.
 
-## Keeping live surfaces current (write forward, not backward)
+## Keeping live surfaces current (write forward, not backward — the State Forward discipline)
 - A live surface (the Hub, the `_Synthesis.md` of a system still in service) leads with the
   present: current state + what's next. A newcomer's first screen should answer "where do things
-  stand?" without summing dated patches.
+  stand?" without summing dated patches. *State-first* and *written forward* mean this.
 - Refreshing means REWRITING that front matter, not appending a dated note on top. Small dated
   deltas may accrete between rewrites — but at a chapter boundary (a system or vendor replaced, a
   project closed) rewrite the surface state-first and move the old regime, whole and dated, into a
   labeled history section with one pointer. History is never deleted — that's what makes rewriting
   safe.
+- Two kinds of history, treated differently. History of the subject — a system replaced, a project
+  closed — is moved whole and kept, as above. A superseded draft of the record itself — a
+  misreading, a miscount, a mis-filing since corrected — comes out; where the reversal was a real
+  decision, record it where this folder records decisions and point there. A session that has
+  just corrected its own reading of the folder writes the corrected reading only. The reader does
+  not need the chronology.
 - When a surface reads as more history than present, a rewrite is due — offer it (procedure in
   the `XX_META/` runbook).
 

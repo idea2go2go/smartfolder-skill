@@ -28,8 +28,10 @@ the later fragments were absorbed as they landed.
   - `260706_Inbox_EscalationRiderEmails.md` (messages 1–4) — absorbed [260710]
   - `260715_Inbox_MeridianCpiCallFollowUp.md` (messages 5–6) — absorbed [260716]
   - `260728_Inbox_EscalationCounterFixedThree.md` (messages 7–9) — absorbed [260729]
-- **Live as of [260729]** — last message [260728]. This folder's provisional silence threshold:
-  **21 days** (recorded [260701] as a guess, adjust on experience — see the freeze rule below).
+- **Live as of [260729]** — last message [260728]. This folder's silence threshold: **14 days** —
+  the integrity script's `FREEZE_AFTER_DAYS` constant, which the filing pass's `threads` check
+  reads; this header mirrors it, change both together. Provisional (set [260701]; adjust on
+  experience — see the freeze rule below).
 
 ## The record (one section per message; verbatim text is never edited)
 
@@ -102,11 +104,14 @@ language (call follow-up)"); same negotiation, same master.*
 3. **The lifecycle lives in the name.** Live masters are **dateless** (dating a live file obliges
    a rename on every edit and breaks every citation — where the folder lacks this live-file rule,
    this convention introduces it). A thread **freezes** — one rename, stamped with the
-   **last-message date** — when its content concludes *or* when a filing pass finds it past the
-   folder's recorded silence threshold. **Ship the shape, never the number:** the threshold is
-   the folder's own, recorded as provisional (the header above carries the slot), because
-   **silence in the record is a lower bound on liveness, never a measurement of it** — it
-   measures the capture pipeline's lag as much as the conversation's quiet. **Freeze into
+   **last-message date** — when the filing pass's `threads` check marks it at or past the
+   folder's silence threshold, or when its content concludes. The check is the inbox workflow's
+   last filing step, run after every merge: it lists the live masters quietest first, and the
+   pass proposes each freeze. **Ship the shape, never the number:** the threshold is the
+   folder's own — the integrity script's `FREEZE_AFTER_DAYS` constant, mirrored in the header
+   above and recorded as provisional — because **silence in the record is a lower bound on
+   liveness, never a measurement of it** — it measures the capture pipeline's lag as much as the
+   conversation's quiet. **Freeze into
    whatever dated family the folder already sorts by; where none exists,
    `YYMMDD_Thread_<Topic>.md`.** Revival is routine, not exceptional: a new message renames the
    master back to dateless-live, former name logged in the header, references repointed in the

@@ -12,7 +12,7 @@ structural nouns (files, chapters, writers, threads), never domain nouns.)*
 
 ---
 
-*Composed [260920] as an example for your review; **nothing has been sent.***
+*Composed [261120] as an example for your review; **nothing has been sent.***
 
 **To:** paul@hess.club
 **Subject:** SmartFolder usage statistics (anonymized) — 1-month milestone
@@ -24,12 +24,12 @@ recorded here* rather than estimated.
 
 ## The folder, in numbers
 
-- **Built by:** SmartFolder Skill v6.6.0 · **built:** [260820] · **age at composition:** 1 month
+- **Built by:** SmartFolder Skill v6.7.0 · **built:** [261020] · **age at composition:** 1 month
   *(age counts from the original build date, not the latest upgrade; where the baseline retains
   only recent upgrade hops, the original date comes from the folder's earliest provenance
   footer or the root manual's first as-of line)*
 - **Baseline package:** deposited (in hand at build); **applied beyond baseline:** none
-- **Retained kit:** present, v6.6.0 — reported once here as retained infrastructure; its files
+- **Retained kit:** present, v6.7.0 — reported once here as retained infrastructure; its files
   are excluded from every count below
 - **Machinery:** advisory tier — change watcher adopted; no hard gate, no generator
 
@@ -63,19 +63,19 @@ recorded here* rather than estimated.
 
 - **Freshness:** 53 of 55 derived surfaces carry as-of dates *(the census's guides, syntheses,
   sidecars, and status surfaces; matched by the folder's own stamp convention)*; oldest
-  [260820], newest [260918]
-- **Version-check log:** 1 delivered pass, 1 failed attempt noted; latest run [260901]
-- **Watcher / integrity:** latest run [260918] *(latest-date stamps only — no folder keeps
+  [261020], newest [261118]
+- **Version-check log:** 1 delivered pass, 1 failed attempt noted; latest run [261101]
+- **Watcher / integrity:** latest run [261118] *(latest-date stamps only — no folder keeps
   cumulative run counts, so none are reported)*
 - **Move log:** 1 file, 214 data rows *(header rows netted out)*
-- **Decision log:** 6 entries, [260820]–[260915] · **status board:** 4 rows, as of [260918]
+- **Decision log:** 6 entries, [261020]–[261115] · **status board:** 4 rows, as of [261118]
 - **Flags register:** 3 flags ever; 1 open and never yet delivered *(2 open in the looser
   still-open reading — both figures given because the definitions differ)*
 - **Inbox:** 2 items currently staged *(no processed-batch tally exists, so none is reported)*
 - **Growth menu:** 2 species adopted (recorded adoptions — anything logged other than "No" /
   "Not yet"); 1 considered-and-declined
-- **Newest file per chapter** (chapters labeled in sort order, names withheld): A [260918] ·
-  B [260901] · C [260826] · D [260915] · E [260820] · F [260919] *(filename dates where at least
+- **Newest file per chapter** (chapters labeled in sort order, names withheld): A [261118] ·
+  B [261101] · C [261026] · D [261115] · E [261020] · F [261119] *(filename dates where at least
   half a chapter's files carry a 6-digit date prefix — 8-digit legacy dates excluded from the
   match — else modification dates; basis stated per chapter when they differ)*
 

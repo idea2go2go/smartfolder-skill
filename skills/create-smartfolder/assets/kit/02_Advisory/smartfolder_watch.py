@@ -12,14 +12,17 @@ they can be offered up for proper filing and the markdown summaries don't fall b
 
 Two verbs (no property argument - it watches its own parent folder):
   snapshot           write/refresh the baseline inventory
-  check [--daily]    diff the live tree vs the baseline; report ADDED/CHANGED/REMOVED
+  check [--daily]    diff the live tree vs the baseline; report ADDED/CHANGED/REMOVED.
+                     Every check that runs writes today's date to the last_check stamp.
                      --daily : run at most once per calendar day (silent if already run today)
 
 Design: hybrid detection (trust size+mtime; re-hash only when mtime moved but size didn't - the
 Dropbox sync-touch case); stateless (re-snapshot to re-baseline; the baseline is only re-written when
 content is filed or dismissed). Tracks the owner's RAW files INCLUDING `MASTER *.docx`; ignores the
-inbox, trash/staging, XX_META itself, hidden/OS-cruft, office lock/temp files, and AI-derived
-guides (_README.md / _Synthesis.md / *_Summary.md / hub). macOS bundles tracked atomically.
+inbox, trash/staging, XX_META itself, hidden/OS-cruft (macOS and Windows), office lock/temp files,
+and AI-derived guides (_README.md / _Synthesis.md / *_Summary.md / hub). macOS bundles tracked
+atomically. Manifest keys are written with "/" on every OS and a "\\" in an older manifest is
+normalized on load, so one baseline serves a folder worked from macOS and Windows alike.
 See this folder's CLAUDE.md "Change tracking". Manifest: XX_META/_manifests/manifest.tsv
 """
 
@@ -42,7 +45,8 @@ BUNDLE_EXTS = {".pages", ".numbers", ".key", ".rtfd", ".webarchive",
 
 def is_excluded_file(name):
     n = name.rstrip("\r\n")
-    if n in (".DS_Store", "Icon", "CLAUDE.md", "AGENTS.md"): return True  # OS cruft + resident guides
+    if n in (".DS_Store", "Icon", "desktop.ini", "Thumbs.db",
+             "CLAUDE.md", "AGENTS.md"):            return True  # OS cruft (macOS, Windows) + resident guides
     if name.startswith("."):                  return True
     if name.startswith("~$") or name.endswith(".tmp"): return True
     if name.endswith("_Summary.md"):          return True
@@ -79,7 +83,7 @@ def walk_tree():
             if os.path.splitext(d)[1].lower() in BUNDLE_EXTS:
                 full = Path(dirpath) / d
                 size, mtime = bundle_signature(full)
-                yield (str(full.relative_to(ROOT)), size, mtime, True)
+                yield (full.relative_to(ROOT).as_posix(), size, mtime, True)
             else:
                 keep.append(d)
         dirnames[:] = keep
@@ -91,7 +95,7 @@ def walk_tree():
                 st = full.stat()
             except OSError:
                 continue
-            yield (str(full.relative_to(ROOT)), st.st_size, int(st.st_mtime), False)
+            yield (full.relative_to(ROOT).as_posix(), st.st_size, int(st.st_mtime), False)
 
 
 def do_snapshot():
@@ -118,7 +122,8 @@ def load_manifest():
                 continue
             p = line.rstrip("\n").split("\t")
             if len(p) >= 4:
-                m[p[0]] = (int(p[1]), int(p[2]), p[3])
+                # Keys use "/" on every OS; heal a manifest an older version wrote with "\\".
+                m[p[0].replace("\\", "/")] = (int(p[1]), int(p[2]), p[3])
     return m
 
 
@@ -144,8 +149,9 @@ def do_check(daily=False):
     for rel in base:
         if rel not in current:
             removed.append(rel)
-    if daily:
-        MANIFEST_DIR.mkdir(parents=True, exist_ok=True); STAMP.write_text(today)
+    # Every check that runs stamps the date, whatever flag the caller used: the stamp means
+    # "the date the check last ran". --daily only decides whether to run at all (above).
+    MANIFEST_DIR.mkdir(parents=True, exist_ok=True); STAMP.write_text(today)
     n = len(added) + len(changed) + len(removed)
     if n == 0:
         print(f"check {ROOT.name}: CLEAN - everything matches the baseline.")

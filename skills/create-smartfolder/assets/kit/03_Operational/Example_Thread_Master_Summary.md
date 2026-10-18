@@ -33,9 +33,7 @@ Bluefield's; Jordan owes Dana a response to the year-5 true-up structure.
 ## Housekeeping
 
 Master created [260710] from the first inbox fragment; two more absorbed since (all ledgered in
-its header; originals staged, never deleted). Freeze check: last message [260728] against this folder's provisional 21-day
-threshold → **LIVE**; recorded quiet through [260818] would freeze the pair into the folder's
-dated family, stamped with the last-message date. At freeze, restate the open items above on the
+its header; originals staged, never deleted). At freeze, restate the open items above on the
 folder's status surface — they do not go quiet with the pair.
 
 ---

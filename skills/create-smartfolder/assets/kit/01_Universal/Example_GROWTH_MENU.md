@@ -35,7 +35,7 @@ approves, implement it.** But never build unprompted, and never pitch in the abs
    Repeated pitching is proposal fatigue — the recurring form of over-machinery.
 
 **On the implementation pointers.** They name artifacts in the **retained kit** — the complete,
-byte-for-byte copy of the SmartFolder Skill kit (**v6.6.0**) deposited in this folder's meta
+byte-for-byte copy of the SmartFolder Skill kit (**v6.7.0**) deposited in this folder's meta
 home as the stable-named `Kit/` subtree. **Every "Build from" path below resolves under that
 subtree** (`Kit/01_Universal/…`, `Kit/03_Operational/…`), directly readable — no package, no
 installed skill, no network, no unpacking. The retained kit is an immutable reference: open an
@@ -53,8 +53,9 @@ missing, the "what it is" column carries enough to act on — carefully, and say
 
 Every one obeys the shared discipline: an `As of [YYMMDD]` line; claims anchored in-narrative;
 **provenance**; a **decay condition**; a label as derived AI analysis (raw wins on conflict); the
-breadcrumb *"To refresh: ask your AI assistant to update this"*; and written **forward** — present
-state first, rewritten at chapter boundaries rather than patched.
+breadcrumb *"To refresh: ask your AI assistant to update this"*; and written **forward** (the
+*State Forward* discipline — the root manual's *Keeping live surfaces current*) — present state
+first, rewritten at chapter boundaries rather than patched.
 
 | Surface | What it removes | Offer it when… | Build from | Adopted? |
 |---|---|---|---|---|
@@ -70,7 +71,7 @@ state first, rewritten at chapter boundaries rather than patched.
 | **Annotating vs enumerating guide** | Either a stale file map or an opaque folder | Enumerate where names can't speak for themselves; annotate where change velocity is high | `01_Universal/Example_README_Annotating.md`, `Example_README_Enumerating.md` | |
 | **Owner welcome guide** ("your records, made answerable") | A non-technical owner never learning what their folder can now do | A non-technical owner uses the folder — at handoff, or when one is invited in later | `01_Universal/Example_Owner_Guide.md`; deliver as a polished PDF at the root | |
 | **Session flags** (person-addressed register) | Cross-session asks and tells getting lost, manually re-raised, or bloating the root file | Several people use the folder and someone who won't be present until a future session needs to be told or asked something — *collaborative folders only; a single-writer folder is never shown this row* | `03_Operational/Example_SESSION_FLAGS.md` — the register holds all content and state; the root file carries only the trigger, and delivery wires to wherever the folder's session boundaries live | |
-| **Thread master + digest pair** | Reading N fragment files in order to understand one conversation — and conversations re-fragmenting after every one-off merge | The folder is fed by a recurring capture path — a connector sweep, a scheduled export, a person forwarding emails as they land — and one exchange has already produced more than one file. *Capture-fed folders only; a folder with no recurring intake is never shown this row* | `03_Operational/Example_Thread_Master.md` + `Example_Thread_Master_Summary.md` — **a pair, ship both**. The producer's one duty: capture notes carrying thread content state the source-system id(s) and subject line(s) in their header (the join keys). Adopting it touches four machineries, consciously: the live-file rule (introduced here if the folder lacks it), write-forward (the master is declared raw tier; its sidecar carries write-forward), a hard integrity gate (every append is a legitimate CHANGED — needs `bless-file` or equivalent), and never-delete (the absorbed-fragment ledger) | |
+| **Thread master + digest pair** | Reading N fragment files in order to understand one conversation — and conversations re-fragmenting after every one-off merge | The folder is fed by a recurring capture path — a connector sweep, a scheduled export, a person forwarding emails as they land — and one exchange has already produced more than one file. *Capture-fed folders only; a folder with no recurring intake is never shown this row* | `03_Operational/Example_Thread_Master.md` + `Example_Thread_Master_Summary.md` — **a pair, ship both**. The producer's one duty: capture notes carrying thread content state the source-system id(s) and subject line(s) in their header (the join keys). Adopting it touches five machineries, consciously: the live-file rule (introduced here if the folder lacks it), write-forward (the master is declared raw tier; its sidecar carries write-forward), a hard integrity gate (every append is a legitimate CHANGED — needs `bless-file` or equivalent), never-delete (the absorbed-fragment ledger), and the filing pass (its last filing step runs the integrity script's `threads` check — live masters listed quietest first, the ones past the silence threshold marked for a proposed freeze; by hand where no script runs) | |
 
 ## Axis 2 — control machinery
 
@@ -86,7 +87,7 @@ above a folder's needs trains people to ignore the system.
 | Machinery | What it does | Warranted when… | Build from | Adopted? |
 |---|---|---|---|---|
 | **Drift detector + manifest** | Non-blocking tripwire: hashes tracked files against a baseline and reports files added, changed, moved, or removed outside the sanctioned path | Humans edit files directly and you want to *know*, not to *block* | `02_Advisory/smartfolder_watch.py`, `Change_Tracking_Procedure.md`, `Example_manifest_rows.tsv` | |
-| **Hard integrity gate** | SHA-1 manifest with `snapshot` / `scan` / `session-start` / `bless-file` modes; drift blocks a filing pass until dispositioned | Multiple writers, drift is expensive to repair, and indexes depend on discipline | `03_Operational/filing_integrity.py` + `Example_Drift_Disposition_Matrix.md` | |
+| **Hard integrity gate** | SHA-1 manifest with `snapshot` / `scan` / `session-scan` / `bless-file` modes — drift blocks a filing pass until dispositioned — plus a read-only `threads` mode that lists live thread masters quietest first for the filing pass's freeze sweep | Multiple writers, drift is expensive to repair, and indexes depend on discipline | `03_Operational/filing_integrity.py` + `Example_Drift_Disposition_Matrix.md` | |
 | **Content-hash guide markers** | The third integrity species — protects *generated guides* so a regeneration preserves hand edits instead of overwriting them | A generator emits scaffolding across a large tree that humans then edit | `04_Generator/gen_readmes.py`, `GENERATOR_NOTES.md` | |
 | **Inbox workflow + lock** | All new content enters through one folder and is filed by a defined procedure; a courtesy lock prevents two concurrent filing passes | Multiple writers plus index or entity machinery worth protecting | `03_Operational/Example_Inbox_Workflow_README.md`, `Example_INBOX_LOCK.md` | |
 | **Review queue** | Mute-and-record: flagged drift is muted for colleagues and queued for the maintainer, so nobody is nagged and nothing is lost | A detector exists *and* people other than the maintainer meet its findings | `03_Operational/Example_REVIEW_QUEUE.md` | |
@@ -130,7 +131,7 @@ the offer without record.
 
 ---
 
-*Provenance: adapted from the SmartFolder Skill kit exemplar (v6.6.0), filled in from this
+*Provenance: adapted from the SmartFolder Skill kit exemplar (v6.7.0), filled in from this
 folder's recorded profile as of the date above. Decays when: the skill version this folder is
 measured against changes, or any declined item's trigger fires. To refresh: ask your AI assistant
 to update this.*

@@ -11,7 +11,7 @@ when asked to process the inbox. If the user says "review but don't file yet," d
 
 **00. Acquire the lock (multi-user folders only).** `_INBOX_LOCK.md` in this folder is
 self-documenting: acquire if UNLOCKED (confirm after a sync wait; check for conflicted copies),
-stop and report if LOCKED (stale >2h or own-lock exceptions apply). Released in step 9.
+stop and report if LOCKED (stale >2h or own-lock exceptions apply). Released in step 10.
 
 **0. Run the integrity scan — a hard gate.**
 `python3 <meta>/filing_integrity.py scan` diffs the tree against the manifest from the last pass and
@@ -63,9 +63,23 @@ in one line; log a decline there.
 **8. Meeting extracts (if the folder uses them):** when a multi-initiative meeting record is filed,
 every initiative named in its filename codes receives an extract — the codes are a contract.
 
-**9. Re-snapshot and release the lock.**
+**9. Thread sweep — the last filing step** *(folders running the thread-master convention)*.
+After every merge, run `python3 <meta>/filing_integrity.py threads`. It reads every live thread
+master, takes each one's last-message date from its message headings, and lists them quietest
+first: a master at or past the folder's silence threshold is marked **FREEZE DUE**; a master with
+no dated message heading prints `??`. **Propose** each due freeze to the user — thread-master rule
+3: one rename stamped with the last-message date, the sidecar renamed with it, references
+repointed, open items restated on the status surface — and freeze in this pass on a yes. Date a
+`??` master by hand. A folder's own workflow may make the freeze execute without asking; a
+scheduled or unattended run lists and reports, and never freezes. **Where the folder runs no
+integrity script, do the same by hand:** open each live master the folder READMEs list and read
+the date of its last message heading. The sweep sits here, after the merges, because a message
+filed in this pass revives its thread before the thread is judged quiet — and before step 10,
+because a freeze is a filing action: it holds the lock and lands in the re-snapshot.
+
+**10. Re-snapshot and release the lock.**
 `python3 <meta>/filing_integrity.py snapshot` records the newly-blessed state; then set the lock
 back to UNLOCKED with a one-line outcome.
 
-**10. Report:** what moved where, which surfaces were updated, what's staged for manual deletion,
-and anything flagged for the maintainer.
+**11. Report:** what moved where, which surfaces were updated, which threads were frozen or
+proposed for freezing, what's staged for manual deletion, and anything flagged for the maintainer.

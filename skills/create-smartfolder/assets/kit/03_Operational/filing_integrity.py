@@ -6,9 +6,10 @@
 """Filing integrity scanner for a shared, multi-writer deal workspace.
 
 Detects files added, removed, changed, or moved outside the normal
-XX_INBOX filing process.
+XX_INBOX filing process, and lists the live thread masters that have gone
+quiet past the folder's silence threshold.
 
-Four modes:
+Five modes:
   snapshot      Walk the project tree and write the manifest (the "known,
                 properly-filed state"). Run after every filing pass, and after
                 resolving any drift found by a scan. Blesses the WHOLE tree.
@@ -29,16 +30,36 @@ Four modes:
                 (regardless of outcome) and then runs a normal scan, so drift
                 surfaces at most once per day through this route. The filing
                 pass uses plain 'scan' and is never affected by the stamp.
+  threads       Read-only. Walk the tree reading only thread masters (files
+                whose names start with one of THREAD_PREFIXES; their
+                _Summary.md sidecars are skipped), take each master's
+                last-message date from its message headings — the latest
+                [YYMMDD] in the first 30 characters of a heading that
+                MESSAGE_HEADING_RE recognizes as a message (level 2-4,
+                leading with a number, "Message", or the bracketed date;
+                the title and worded section headings never count); never
+                the header line, which drifts — and print every live master
+                quietest first with the days since its last message. A master
+                at or past FREEZE_AFTER_DAYS is marked FREEZE DUE; a master
+                with no dated heading prints ?? (open it and date it by hand).
+                Exit code 1 if any master is due, else 0. Hashes nothing and
+                writes nothing: the filing pass runs it as its last filing
+                step, after every merge and before 'snapshot', and decides
+                each freeze itself.
 
 Usage (from anywhere; project root is inferred from the script location,
 or pass --root explicitly):
   python3 filing_integrity.py snapshot
   python3 filing_integrity.py scan
   python3 filing_integrity.py session-scan
+  python3 filing_integrity.py threads
   python3 filing_integrity.py scan --root "/path/to/project"
 
 Design notes:
-  - Manifest is a TSV: relative_path <TAB> size_bytes <TAB> sha1
+  - Manifest is a TSV: relative_path <TAB> size_bytes <TAB> sha1. The
+    relative path is written with "/" on every OS, and a "\\" in a manifest an
+    older version wrote is normalized on load — one baseline serves a folder
+    worked from macOS and Windows alike.
   - Excluded from tracking: XX_INBOX/ (the inbox is expected to
     churn), any XX_DELETE_MANUALLY/ folder, hidden files/folders
     (.DS_Store etc.), macOS custom-folder-icon marker files ("Icon\r"),
@@ -56,6 +77,7 @@ from __future__ import annotations  # keeps 3.9-compatible annotations (see read
 import argparse
 import datetime
 import hashlib
+import re
 import sys
 from pathlib import Path
 
@@ -77,6 +99,25 @@ EXCLUDED_FILE_PREFIXES = ("~$",)
 # descend into or track their contents. Mirrors smartfolder_watch.py.
 BUNDLE_EXTS = {".pages", ".numbers", ".key", ".rtfd", ".webarchive",
                ".oo3", ".ooutline", ".goodnotes", ".more"}
+
+# --- Thread masters: the 'threads' mode. These constants are this folder's own to set. ---
+# A file whose name starts with one of THREAD_PREFIXES is a live thread master (the
+# convention names live masters dateless, e.g. "EmailThread_<Topic>.md"; a frozen master
+# leads with its last-message date, so it never matches). Sidecars ("*_Summary.md") are
+# skipped. FREEZE_AFTER_DAYS is the folder's silence threshold in days: the thread-master
+# convention's header mirrors this number — change both together. Silence in the record
+# is a lower bound on liveness, so 'threads' lists and marks; the filing pass decides.
+THREAD_PREFIXES = ("EmailThread_", "ChatThread_", "Thread_")
+FREEZE_AFTER_DAYS = 14
+# A heading is a MESSAGE heading when it is level 2-4 and its text leads with a number, the
+# word "Message", or the bracketed date: "### 1. [260701] 14:02 ET — ...", "## 3. [260817]",
+# "## Message 9 — [260928]", "## [260924] 3:54 PM ET — ...". The H1 title and worded section
+# headings ("## Hearing prep [261115]") never count, so a date in a title cannot outrank the
+# last message. Adapt this constant to the folder's own heading form, like the two above.
+MESSAGE_HEADING_RE = re.compile(r"^#{2,4}\s+(?:\d|Message\b|\[)")
+# A message heading carries its date in the first 30 characters: "### 3. [260705] ...".
+HEADING_DATE_RE = re.compile(r"\[(\d{6})\]")
+HEADING_DATE_SPAN = 30
 
 
 def script_dir() -> Path:
@@ -142,7 +183,7 @@ def walk_tree(root: Path) -> dict:
                 if p in skip:
                     continue  # scanner state files, not project content
                 size = p.stat().st_size
-                entries[str(p.relative_to(root))] = (size, sha1_of(p))
+                entries[p.relative_to(root).as_posix()] = (size, sha1_of(p))
 
     recurse(root)
     return entries
@@ -156,7 +197,8 @@ def load_manifest(root: Path) -> dict:
             if not line:
                 continue
             rel, size, digest = line.rsplit("\t", 2)
-            m[rel] = (int(size), digest)
+            # Keys use "/" on every OS; heal a manifest an older version wrote with "\\".
+            m[rel.replace("\\", "/")] = (int(size), digest)
     return m
 
 
@@ -228,7 +270,7 @@ def cmd_bless_file(root: Path, target: str) -> int:
     if not p.is_absolute():
         p = root / target
     try:
-        rel = str(p.resolve().relative_to(root.resolve()))
+        rel = p.resolve().relative_to(root.resolve()).as_posix()
     except ValueError:
         print(f"Path is outside the project root: {target}")
         return 2
@@ -259,6 +301,95 @@ def cmd_bless_file(root: Path, target: str) -> int:
 
     print(f"Nothing to do: '{rel}' is neither on disk nor in the manifest.")
     return 2
+
+
+def is_thread_master(p: Path) -> bool:
+    return (p.suffix.lower() == ".md"
+            and p.name.startswith(THREAD_PREFIXES)
+            and not p.name.endswith("_Summary.md"))
+
+
+def thread_masters(root: Path) -> list:
+    """Every live thread master under root, with the same exclusions as walk_tree."""
+    found = []
+
+    def recurse(d: Path):
+        try:
+            children = sorted(d.iterdir())
+        except PermissionError:
+            return
+        for p in children:
+            if p.name.startswith("."):
+                continue
+            if p.is_dir():
+                if p.name in EXCLUDED_DIRS or p.suffix.lower() in BUNDLE_EXTS:
+                    continue
+                recurse(p)
+            elif p.is_file() and is_thread_master(p):
+                found.append(p)
+
+    recurse(root)
+    return found
+
+
+def last_message_date(master: Path):
+    """The latest [YYMMDD] found in the first HEADING_DATE_SPAN characters of any
+    message heading (a line MESSAGE_HEADING_RE matches). Returns a datetime.date, or
+    None when no message heading carries a date. The title, worded section headings,
+    and the header line's own dates are never read: the header is derived from the
+    headings and drifts, and a dated title would outrank the last message. Two-digit
+    years follow the folder convention (SKILL.md): 90-99 -> 1990s, else 2000s."""
+    latest = None
+    with open(master, encoding="utf-8", errors="replace") as f:
+        for line in f:
+            if not MESSAGE_HEADING_RE.match(line):
+                continue
+            for yymmdd in HEADING_DATE_RE.findall(line[:HEADING_DATE_SPAN]):
+                try:
+                    yy = int(yymmdd[:2])
+                    d = datetime.date((1900 if yy >= 90 else 2000) + yy, int(yymmdd[2:4]), int(yymmdd[4:6]))
+                except ValueError:
+                    continue
+                if latest is None or d > latest:
+                    latest = d
+    return latest
+
+
+def cmd_threads(root: Path) -> int:
+    """List live thread masters quietest first; mark those at or past the threshold.
+
+    Read-only — hashes nothing, writes nothing. Exit 1 if any master is FREEZE DUE.
+    """
+    today = datetime.date.today()
+    dated, undated = [], []
+    for m in thread_masters(root):
+        rel = m.relative_to(root).as_posix()
+        d = last_message_date(m)
+        if d is None:
+            undated.append(rel)
+        else:
+            dated.append(((today - d).days, d, rel))
+    dated.sort(key=lambda t: (-t[0], t[2]))
+    due = [t for t in dated if t[0] >= FREEZE_AFTER_DAYS]
+
+    total = len(dated) + len(undated)
+    if total == 0:
+        print(f"No live thread masters found (prefixes {', '.join(THREAD_PREFIXES)}).")
+        return 0
+    print(f"Live thread masters: {total}, quietest first — silence threshold "
+          f"{FREEZE_AFTER_DAYS} days, today {today.isoformat()}.")
+    for days, d, rel in dated:
+        mark = "FREEZE DUE" if days >= FREEZE_AFTER_DAYS else ""
+        print(f"  {mark:<10} {days:>4} d  last message [{d.strftime('%y%m%d')}]  {rel}")
+    for rel in undated:
+        print(f"  {'??':<10} {'--':>4} d  no dated message heading   {rel}  — open it and date it by hand")
+    if due:
+        print(f"\n{len(due)} FREEZE DUE — propose each freeze to the user (thread-master rule 3): one"
+              " rename stamped with the last-message date, the sidecar with it, references"
+              " repointed, open items restated on the status surface.")
+        return 1
+    print("\nNone due.")
+    return 0
 
 
 def cmd_snapshot(root: Path) -> int:
@@ -356,7 +487,7 @@ def cmd_scan(root: Path, hard_gate: bool = True) -> int:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("mode",
-                    choices=["snapshot", "scan", "session-scan", "bless-file"])
+                    choices=["snapshot", "scan", "session-scan", "bless-file", "threads"])
     ap.add_argument("target", nargs="?",
                     help="For bless-file: the project-relative path to mute")
     ap.add_argument("--root", type=Path, default=None,
@@ -370,6 +501,8 @@ def main() -> int:
         return cmd_snapshot(root)
     if args.mode == "session-scan":
         return cmd_session_scan(root)
+    if args.mode == "threads":
+        return cmd_threads(root)
     if args.mode == "bless-file":
         if not args.target:
             print("bless-file requires a path argument, e.g.:\n"

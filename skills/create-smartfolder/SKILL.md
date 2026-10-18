@@ -6,23 +6,22 @@ description: "Turn a folder hierarchy into a SmartFolder — a tiered navigation
 <!--
   ============================================================
   SmartFolder Skill — a skill for building SmartFolders.
-  Version: v6.6.0 — last changed [260826].
-  v6.6.0: the version baseline streamlines — record always,
-  archive when in hand, never procure — and the deposited
-  Offer A gains its missing false branch (RM-27); cloud-sync
-  collaboration guidance — offline availability, per
-  collaborator machine (RM-25); an opt-in anonymized
-  developer-feedback email, offered at build close-out and
-  on a milestone schedule, composed only on acceptance
-  (RM-26); the maintenance-procedures deposit restated —
-  runbook as default, not mandate (RM-28); Phase 5's deposit
-  spec moves to references/DEPOSIT_SPEC.md (PD-26); a
-  kit-consistency check joins the release procedure,
-  workspace-side, nothing in this package (RM-29); and every
-  finished folder retains the whole kit byte-for-byte as a
-  readable Kit/ subtree in its meta home, so the growth menu
-  and feedback procedure resolve locally with no package,
-  skill, or network (RM-30).
+  Version: v6.7.0 — last changed [261014].
+  v6.7.0: four repairs, three of them putting a rule where the
+  decision is actually made. The integrity scripts' manifests
+  are OS-independent — every key written with "/" and healed
+  on load, every watcher check stamps last_check, Windows
+  cruft ignored (RM-34); the filing pass gains a thread sweep
+  — a read-only `threads` mode in filing_integrity.py computes
+  the live-thread list from the masters each pass and marks
+  the quiet ones, run last, after every merge (RM-33); the
+  flags register's rules say plainly that a session reads
+  every Pending flag at session start and that delivery means
+  the headline is in the final answer — on the no-identity
+  announcement and the feedback-milestone offer too (RM-32);
+  and the write-forward rule gains its disposition test and
+  its short name, State Forward — history of the subject is
+  kept, a superseded draft of the record comes out (RM-31).
   Full version history: references/VERSION_HISTORY.md (in this
   package; read on demand, never deposited) and CHANGELOG.md
   at github.com/idea2go2go/smartfolder-skill.
@@ -46,7 +45,7 @@ description: "Turn a folder hierarchy into a SmartFolder — a tiered navigation
   ============================================================
 -->
 
-# SmartFolder Skill (v6.6.0)
+# SmartFolder Skill (v6.7.0)
 
 Turn the target folder into a **SmartFolder**: a self-maintaining navigation-and-knowledge layer
 over the real files, so the user, other people, and future Claude sessions can operate in it with
@@ -172,17 +171,24 @@ this."* The discipline belongs to **every** derived surface, Tier-2 guides inclu
 like any Tier-3 species. The behavioral rule — **offer to refresh any derived surface materially
 behind its sources before relying on it** — lives once, in the root file, not in each file.
 
-**Write forward, not backward (live surfaces).** A live surface — one whose subject is still
-moving: a board row, a README's front matter, the synthesis of an ongoing system — leads with the
-present: current state + what's next, one screen, written from now looking forward. The test: a
-newcomer's first screen answers "where do things stand?" without summing dated patches. Refreshing
-means **rewriting the front matter, not appending a dated delta** — appending is the writer's cheap
-path, but it shifts the cost onto every future reader. Small deltas may accrete between rewrites;
-at a **chapter boundary** (a close, a kill, a pivot, a replacement) the surface is rewritten
-state-first and the accumulated narrative is **demoted whole** into a labeled history section or a
-sealed, dated index, with one pointer from the front matter — never deleted or summarized away
-(that is what makes rewriting safe). Tripwire: front matter carrying more history than present
-state is a boundary in disguise — a rewrite is due. Archival syntheses of completed arcs already
+**Write forward, not backward (live surfaces).** This is the **State Forward** discipline;
+*state-first* and *written forward* elsewhere in this skill and its kit mean the same thing. A live
+surface — one whose subject is still moving: a board row, a README's front matter, the synthesis of
+an ongoing system — leads with the present: current state + what's next, one screen, written from
+now looking forward. The test: a newcomer's first screen answers "where do things stand?" without
+summing dated patches. Refreshing means **rewriting the front matter, not appending a dated delta**
+— appending is the writer's cheap path, but it shifts the cost onto every future reader. Small
+deltas may accrete between rewrites; at a **chapter boundary** (a close, a kill, a pivot, a
+replacement) the surface is rewritten state-first and the accumulated narrative is **demoted
+whole** into a labeled history section or a sealed, dated index, with one pointer from the front
+matter — never deleted or summarized away (that is what makes rewriting safe). **Two kinds of
+history, treated differently:** history of the **subject** (a system replaced, a decision reversed,
+a project closed) is demoted whole and kept, as above; a superseded draft of the **record itself**
+(a misreading, a miscount, a mis-filing since corrected) is not history and has no reader — it
+comes out, and where the reversal was a genuine decision, `DECISIONS.md` is its home and the
+pointer goes there. A session that has just corrected its own reading of the folder writes the
+corrected reading only. The reader does not need the chronology. Tripwire: front matter carrying
+more history than present state is a boundary in disguise — a rewrite is due. Archival syntheses of completed arcs already
 comply: their "present" is the finished story. Deposit this rule in each SmartFolder's root
 `CLAUDE.md` (procedure in the runbook) — accretion is a maintenance-time failure, and the skill
 won't be there.

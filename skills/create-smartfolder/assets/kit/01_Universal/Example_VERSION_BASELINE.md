@@ -6,17 +6,17 @@ it from this file alone, the skill nowhere in the loop; the root manual carries 
 line, in its *Session boundaries* section. This exemplar is mostly procedure rather than mostly
 structure: the procedure IS the artifact, and the deposit is what executes monthly in the field.)*
 
-**As of [260901].** This folder was built by the **SmartFolder Skill v6.6.0** [260820]. This file
+**As of [261101].** This folder was built by the **SmartFolder Skill v6.7.0** [261020]. This file
 records which release built the folder and carries the folder's own monthly update check.
 
 ## The recorded baseline
 
-- **Version:** v6.6.0
-- **Built:** [260820] *(the build date — the feedback milestones below compute from it)*
+- **Version:** v6.7.0
+- **Built:** [261020] *(the build date — the feedback milestones below compute from it)*
 - **Repository:** `github.com/idea2go2go/smartfolder-skill` *(the check's load-bearing URLs are
   in the next section)*
 - **Applied beyond baseline:** none *(record here any roadmap items applied ahead of a release)*
-- **Package:** `SmartFolder Skill v6.6.0.skill`, deposited beside this file **because it was in
+- **Package:** `SmartFolder Skill v6.7.0.skill`, deposited beside this file **because it was in
   hand** — the archive this build ran from, recorded as **original**. The zip, not an unpacked
   payload: zipped it is inert to casual reading and still fully diffable. *(A package is
   deposited only when one is already in hand — **original**, the archive the build ran from, or
@@ -26,7 +26,7 @@ records which release built the folder and carries the folder's own monthly upda
   its tagged release under the repository URL.)*
 - **File count:** 32 files in the archive
 - **SHA-256:** `c7d4e19a5b02f6883e51a90bd47c6f12e08a3d9b1c5f7042a6e8d90314bfc275`
-- **Retained kit:** `Kit/` in this meta folder — the complete `assets/kit/` of **v6.6.0**,
+- **Retained kit:** `Kit/` in this meta folder — the complete `assets/kit/` of **v6.7.0**,
   byte-for-byte: the growth menu's implementation library, directly readable with no package or
   network. Immutable reference — open and adapt out, never edit in place. **Not provenance**,
   and recorded separately from the optional package above; replaced only through an adopted
@@ -127,38 +127,40 @@ check needs nothing but this file and one fetch. Offer, never force, at every st
 At each session-boundary check attempt — **delivered or not: an unreachable repository never
 silences a milestone**, since the network's answer has no bearing on the folder's age — when a
 milestone has passed unfired — **1, 3, and 12 months after the build date above, then every 12
-months thereafter**, computed from the build date plus the log below — offer once, casually: *"The developer of this skill, Paul Hess (paul@hess.club), would
+months thereafter**, computed from the build date plus the log below — offer once, casually, **in
+the session's final answer** (a mid-turn mention does not count): *"The developer of this skill, Paul Hess (paul@hess.club), would
 welcome anonymized statistics on this SmartFolder's shape and usage. I can create an anonymized
 file for you to review and send if you wish. Depending on your repository size, this could take 5
 to 10 minutes."* **Compose only on a yes** — from the retained kit's `Example_Feedback_Email.md`
 (`Kit/01_Universal/`, directly readable in this meta folder), filed beside the recorded profile as a dated
 draft whose opening line reads *composed as an example for your review; nothing has been sent*.
 Pattern-level statistics only — never file contents, names, paths, or subject matter — and **the
-owner reviews and sends; nothing is ever sent by this folder's machinery.** Stamp each firing
-below with its outcome. A decline stamps the firing and never suppresses the next milestone —
-firings are stamped, declines are not tracked; an explicit *"never ask again"* goes to the growth
-menu's considered-and-declined log and ends the schedule.
+owner reviews and sends; nothing is ever sent by this folder's machinery.** Record each firing
+below with its outcome — a firing is recorded only when the final answer carried the offer. A
+decline is recorded like any firing and never suppresses the next milestone — firings are
+recorded, declines are not tracked; an explicit *"never ask again"* goes to the growth menu's
+considered-and-declined log and ends the schedule.
 
 **Feedback offers log** *(newest first, one line per fired milestone — outcome, never nagging)*
 
-*(No milestone reached yet — the first is due [260920], one month after the build date above, and
+*(No milestone reached yet — the first is due [261120], one month after the build date above, and
 fires at the next session-boundary check attempt on or after that date, **delivered or not**.)*
 
 ## The stamp and the check log
 
-**Last checked: 2026-09**
+**Last checked: 2026-11**
 
 *(Newest first. A failed attempt is noted here, never stamped; a delivered check updates the
 stamp above and may add a one-line record.)*
 
-- [260901] Pass delivered — published v6.6.0 = installed v6.6.0 = baseline; current. Stamped
-  2026-09.
-- [260828] Attempt failed — repository unreachable from a sandboxed session. Month left
+- [261101] Pass delivered — published v6.7.0 = installed v6.7.0 = baseline; current. Stamped
+  2026-11.
+- [261028] Attempt failed — repository unreachable from a sandboxed session. Month left
   unstamped; retried at a later session boundary.
 
 ---
 
-*Status surface — deposited [260820] at build close-out; the check re-stamps it monthly, the
+*Status surface — deposited [261020] at build close-out; the check re-stamps it monthly, the
 feedback milestones stamp their log, and the version-upgrade review re-stamps it at each adopted
 upgrade. Decays when: a newer release is adopted without re-stamping, or the repository URLs
 change. To refresh: ask your AI assistant to update this.*

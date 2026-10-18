@@ -6,6 +6,37 @@ keeps the current version and a one-line what's-new. The repository `CHANGELOG.m
 github.com/idea2go2go/smartfolder-skill carries the same story in plain language for the public
 channel.*
 
+**v6.7.0 — [261014].** Four repairs, three of them putting a rule where the decision is actually
+made. The integrity scripts' manifests are OS-independent: both scripts write every manifest key
+with `/` and normalize `\` on load, so a baseline written on one OS reads correctly on the other
+and existing baselines heal on read; every watcher `check` writes the `last_check` stamp and the
+root exemplar's session-start line names `check --daily`; the watcher ignores `desktop.ini` and
+`Thumbs.db` as the gate already did; the upgrade path offers the patch to deposited scripts as a
+targeted edit, never a file swap (RM-34). The thread-master freeze trigger gains its observer:
+`filing_integrity.py` gains a read-only `threads` mode that walks the tree reading only thread
+masters, takes each master's last-message date from its message headings, lists the live masters
+quietest first, and marks any at or past `FREEZE_AFTER_DAYS` (shipped at 14, the folder's own to
+set) FREEZE DUE; the inbox workflow runs it as the last filing step, after every merge and before
+the re-snapshot, proposing each freeze — by hand where no script runs, never in a scheduled run —
+and rule 3 of the convention, the master's threshold slot, the sidecar, the growth menu, and the
+kit README say so; no register file, nothing written twice (RM-33). The session-flags register's
+rules rewritten plainly: a session reads every Pending flag at session start and delivers only the
+ones addressed to whoever is present; delivery means the headline is in the session's final
+answer, a mid-turn mention does not count, and a firing is recorded only when the final answer
+carried it — on the delivery rule, the recording rule, the no-identity announcement, and the
+feedback-milestone offer in the deposited baseline and the deposit spec; once per session, every
+session, until resolved; the stamp alone means the headline was given; the uncomputable *detected
+miss* sentence removed; retrieval stays prose and the root manual is unchanged (RM-32, absorbing
+IN-11). The write-forward rule gains its disposition test — history of the subject is demoted
+whole and kept; a superseded draft of the record itself comes out, `DECISIONS.md` the home where
+the reversal was a real decision — and the authoring-time sentence: a session that has just
+corrected its own reading of the folder writes the corrected reading only; the discipline is named
+*State Forward*, with *state-first* and *written forward* declared synonyms and each bare use
+pointed back (RM-31). The growth menu's hard-gate row corrected to the script's real modes.
+Release procedure, workspace-side and nothing in the package: the kit-consistency check now
+asserts script mode names in backticked prose, and a cross-OS manifest fixture plus a real
+Python 3.9 run of both scripts join the pre-ship checks whenever a script changes.
+
 **v6.6.0 — [260826].** The version baseline streamlines — record always (version, build date,
 applied-beyond, repository URL), the `.skill` archive deposited only when already in hand, and
 procurement removed whole: the four-rung ladder and the reconstruction concept are gone, because
@@ -57,7 +88,7 @@ announcement protocol, the register stated targeted-not-private, evidence-basis 
 reconnect step (RM-20); the version check reads /releases/latest as load-bearing, "you are
 current" takes a fetch in this session and better evidence than "something newer exists", two
 free tripwires, a repeated-failure sentence, and a repair offer for deposited checks (RM-21); the
-Existing SmartFolders path rewritten state-first around the repairs deposits cannot make to
+Existing SmartFolders path rewritten state-first (*State Forward*) around the repairs deposits cannot make to
 themselves.
 
 **v6.3.0 — [260804].** Close-the-loop hardened — the distant test sweeps the whole surface
@@ -80,5 +111,5 @@ corrected to "SmartFolder Skill"; kit README script count corrected.
 **v6.1.1 — [260724].** Kit script sample configuration and docstring examples use invented
 placeholder content throughout. No functional change.
 
-**v6.1.** Added the write-forward (state-first) discipline for live surfaces, deposited into each
-SmartFolder's CLAUDE.md.
+**v6.1.** Added the write-forward (state-first) discipline for live surfaces — named *State Forward*
+in v6.7.0 — deposited into each SmartFolder's CLAUDE.md.

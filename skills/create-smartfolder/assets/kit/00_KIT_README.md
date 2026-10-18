@@ -3,7 +3,7 @@
 
 **What this is.** Working artifacts whose shapes and discipline come from three live SmartFolders
 (the prompt's three precedents), assembled [260706], extended [260728] (v6.2.0), [260804]
-(v6.3.0), [260813] (v6.4.0), [260815] (v6.5.0), and [260826] (v6.6.0). The three Python
+(v6.3.0), [260813] (v6.4.0), [260815] (v6.5.0), [260826] (v6.6.0), and [261014] (v6.7.0). The three Python
 scripts (see the table below) are working code; the sample configuration and the example content in
 their docstrings are invented. Every markdown
 exemplar is **fictionalized** — real shapes and discipline, invented content — so the kit is safe to
@@ -55,7 +55,7 @@ blessed where a manifest runs).
 | `02_Advisory/Change_Tracking_Procedure.md` | The tripwire's behavioral procedure (daily stamp, 4-option offer) | Same as above |
 | `02_Advisory/Example_manifest_rows.tsv` | Baseline manifest format the watcher reads/writes | Same as above |
 | `02_Advisory/Example_Operations_Hub.md` | One-page cross-folder hub (calendar / directory / sensitive-info map) | Wisdom-dominant folders with many system areas |
-| `03_Operational/filing_integrity.py` | Hard integrity gate: SHA1 manifest, scan/snapshot/session-scan/bless-file | Multiple writers; drift is expensive; gating posture |
+| `03_Operational/filing_integrity.py` | Hard integrity gate: SHA1 manifest, scan/snapshot/session-scan/bless-file — plus `threads`, the read-only thread-master freeze check the filing pass runs as its last filing step | Multiple writers; drift is expensive; gating posture |
 | `03_Operational/Example_Drift_Disposition_Matrix.md` | The gate's companion reference: per-type dispositions (ADDED/CHANGED/MOVED/REMOVED), snapshot-vs-bless-file, the review-queue lifecycle, no-blame wording | Only where the hard gate is warranted — never transplant into advisory folders |
 | `03_Operational/Example_Inbox_Workflow_README.md` | Sanctioned-intake workflow (all content enters via an inbox) | Multiple writers; index/entity machinery to protect |
 | `03_Operational/Example_INBOX_LOCK.md` | Courtesy lock for simultaneous sessions over file sync | Two+ people may run filing passes concurrently |

@@ -15,44 +15,49 @@ get lost, get manually re-raised each time, or bloat the root file.
 1. **Targeted, not private — and identity is established, never assumed.** Every flag names its
    addressee by email. Flags are team coordination, not secrets: anyone with folder access can
    read this file, and delivery filtering exists for **relevance, not access control**.
-   Delivering, escalating, or stamping requires knowing who is present — from **explicit session
-   context**, or from the user saying so. Where neither exists and flags are Pending, say so
-   **once, without blocking the user's own work**: name **everyone currently eligible for a
-   delivery — direct addressees *and* anyone a due escalation now falls to** (rule 7), described by
-   that role — and hold the content: *"this folder has session flags waiting (two for Jordan, one
-   for Alex, and one escalation now due to Alex); I can't tell who's here this session — tell me
-   who you are and I'll deliver yours"* — then continue with what was actually
-   asked. **Naming only the direct addressees would leave an escalation recipient with no cue to
+   Delivering, escalating, or recording a firing requires knowing who is present — from
+   **explicit session context**, or from the user saying so. Where neither exists and flags are
+   Pending, say so **once, in the session's final answer, without blocking the user's own work**:
+   name **everyone currently eligible for a delivery — direct addressees *and* anyone a due
+   escalation now falls to** (rule 7), described by that role — and hold the content: *"this
+   folder has notes waiting (two for Jordan, one for Alex, and one escalation now due to Alex) —
+   I can't tell who's here this session; tell me who you are and I'll deliver yours"*. A mid-turn
+   mention does not count: the announcement rides the final answer, after the work asked for.
+   **Naming only the direct addressees would leave an escalation recipient with no cue to
    identify themselves, and the fallback would wait silently — the exact miss rule 7 exists to
-   prevent.** **No identity → no delivery, no stamp, no state change**: retrieval still prints every
-   Pending flag (rule 2), and the flags simply wait. **A stated name is a declaration, not
+   prevent.** **No identity → no delivery, nothing recorded, no state change**: the session still
+   reads every Pending flag (rule 2), and the flags wait. **A stated name is a declaration, not
    proof** — the delivery stamp records which basis was used (rule 4). Raise-time is symmetric:
    a user flagging something for someone else is asked who to record as raiser — a direct ask is
    fine there, they are doing flag work — and **if they decline, the flag is created anyway,
    raiser not stated**.
-2. **Retrieval is unconditional; delivery is filtered.** The session-start step prints *every*
-   Pending flag into context on every run; only the flags addressed to the person present are
-   delivered. Firing that depends on a session remembering to open this file misses silently.
-3. **Headline first, detail on request.** Delivery is the entry's one-line `Headline:` plus an
-   offer of detail; the full `Ask / tell` body waits until the person engages. Non-blocking —
-   state it, then get on with what was actually asked.
-4. **Once per session, stamped — and the stamp carries its evidence basis.** One mention per
-   session, appended to the entry's `Fired:` line as `[YYMMDD] (chat, identity: session context)`
-   or `[YYMMDD] (chat, identity: declared)` — recording *which basis* established the addressee's
-   presence, so a later audit can tell the two apart. **Neither is proof, and the stamp does not
-   claim one:** a host's session context can itself carry a configured default, and a message
-   written into a chat is a delivery action, not evidence the person read it. What the stamp
-   guarantees is that nothing is marked delivered without a recorded identity basis and a delivery
-   action in that session — an audit trail, not authentication.
-   Out-of-band deliveries stamp `[YYMMDD] (Slack)` — the address is the identity (rule 5). No
-   engagement leaves it Pending, to re-fire next session. A Pending flag whose addressee has had
-   sessions but no fresh stamp is a **detected miss** — say so, and deliver late.
+2. **Retrieval is unconditional; delivery is filtered.** A session reads every Pending flag at
+   session start, but delivers only the ones addressed to whoever is present.
+3. **Headline first, detail on request — in the final answer.** Delivery is the entry's one-line
+   `Headline:` plus an offer of detail, in the session's **final answer**; a mid-turn mention does
+   not count, so a headline given while the work was underway is repeated at the end. The full
+   `Ask / tell` body waits until the person engages. Non-blocking: the work asked for is done in
+   the same turn, and the headline rides its final answer.
+4. **Once per session, every session, until resolved — and the stamp carries its evidence
+   basis.** Each firing is recorded on the entry's `Fired:` line, as `[YYMMDD] (chat, identity:
+   session context)` or `[YYMMDD] (chat, identity: declared)` — recording *which basis*
+   established the addressee's presence, so a later audit can tell the two apart. An interactive
+   delivery counts when the headline is in the final answer (rule 3); an out-of-band delivery
+   counts when the message was sent (rule 5). The stamp alone means the headline was given; add a
+   note only when more happened — *"— detail requested"*, *"— will answer next session"*.
+   **Neither basis is proof, and the stamp does not claim one:** a host's session context can
+   itself carry a configured default, and a message written into a chat is a delivery action, not
+   evidence the person read it. What the stamp guarantees is that nothing is marked delivered
+   without a recorded identity basis and a delivery that counts, in that session — an audit
+   trail, not authentication. Out-of-band deliveries record `[YYMMDD] (Slack)` — the
+   address is the identity (rule 5). A flag stays Pending until it is answered, and fires again
+   every session until then.
 5. **Delivery routing — interactive vs. autonomous.** Interactive session → chat. Scheduled or
    unattended run (nobody is reading a chat) → deliver out-of-band (here: Slack DM) and note it in
    the run's digest — never write into the void. An out-of-band message addressed to a person
    needs no answer to "who is present" — **the address is the identity** — so autonomous runs
    escape rule 1's identity problem entirely. An autonomous run with **no out-of-band channel
-   configured delivers nothing and stamps nothing**, and says so in the run's digest. Autonomous
+   configured delivers nothing and records nothing**, and says so in the run's digest. Autonomous
    re-delivery is throttled to once per 7 days, gated on the last `(Slack)` stamp; interactive
    delivery stays once per session, ungated.
 6. **Answering and applying are separate steps.** Record the answer close to verbatim, move the
@@ -68,9 +73,9 @@ get lost, get manually re-raised each time, or bloat the root file.
    because an addressee who never opens a session leaves a flag Pending forever. The subtle
    consequence: checking flags for the current user means evaluating **two** sets — flags
    addressed to them, *and* flags whose escalation names them and whose date has arrived. Miss the
-   second and the fallback silently never fires. Escalations stamp `Escalated:` and re-nudge at
-   most weekly — and they use **the same identity basis as rule 1, identically**: no established
-   identity, no escalation delivery, no `Escalated:` stamp.
+   second and the fallback silently never fires. Escalations are recorded on an `Escalated:` line
+   and re-nudge at most weekly — and they use **the same identity basis as rule 1, identically**:
+   no established identity, no escalation delivery, no `Escalated:` entry.
 
 **Making identity automatic (an optional convenience, never the mechanism).** Where the
 environment already hands the session the user's identity — as some assistants do — nothing is
@@ -82,16 +87,14 @@ shape *"in SmartFolders with a session-flags file, my default identity is Jordan
 otherwise"*). Offer in two contexts only: after a user volunteers an identity, and at register
 adoption in environments that supply none. At most once per session; it may recur in later
 sessions, being non-gating; no decline is recorded. An automatic identity is still a
-**declaration, not proof** — deliveries under it stamp `identity: declared`.
+**declaration, not proof** — deliveries under it record `identity: declared`.
 
 **Scope.** Flags are person-addressed asks and tells that must survive the session boundary. Tasks
 belong on the status board and decisions in the decision log; a flag may point at either, never
 replace them.
 
-**Where firing hangs.** Delivery wires to wherever this folder's session boundaries live — named
-in the root file; here, the integrity script's session-start step. **Known residual failure
-mode:** a session whose start trigger never runs delivers nothing. This register cannot fire
-itself, and hardened retrieval does not fix a trigger that was skipped.
+**Where firing hangs.** On the session-start line of the root file's *Session boundaries* section,
+which names this register: the session reads it there, at session start, and delivers from it.
 
 ## Pending
 
@@ -112,7 +115,7 @@ itself, and hardened retrieval does not fix a trigger that was skipped.
   4.1 psf; Kestrel's deck from the same week says 4.6. The sidecar carries both figures with
   last-mile pointers. Maintainer's call which number the HP-SOLAR board row and the
   interconnection application should carry.
-- **Fired:** [260701] (chat, identity: declared) — no engagement; re-fires next session
+- **Fired:** [260701] (chat, identity: declared)
 
 ### FLAG-06 → Jordan (jordan@bluefield.example) — conditional, date-gated
 - **Status:** Pending · raised [260625] by Alex
@@ -174,7 +177,8 @@ someone remembering the next step.)*
 - **Headline:** One sentence, readable in isolation.
 - **Ask / tell:** The full body — enough that the addressee can act without hunting.
 - **Fired:** — (append [YYMMDD] (chat, identity: session context), [YYMMDD] (chat, identity:
-  declared), or [YYMMDD] (Slack) per delivery)
+  declared), or [YYMMDD] (Slack) per delivery; the stamp alone means the headline was given — add
+  a note only when more happened: "— detail requested", "— will answer next session")
 - **Escalate:** if still Pending on/after [YYMMDD], also notify <person B> (email)     (optional)
 
 On resolution: record the answer near-verbatim ("Answered [YYMMDD]:"), name what it was applied

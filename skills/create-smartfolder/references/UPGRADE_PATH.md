@@ -67,6 +67,36 @@ delta never fights a convention the folder deliberately holds.
   path live in `references/`, so a review that never opens that folder can register a new
   version number and miss the changed instruction behind it. One sentence in the folder's
   maintenance procedures; nothing else changes.
+- **Manifest keys written with the running OS's path separator (v6.7.0; every watcher and gate
+  deposited before it).** A deposited `smartfolder_watch.py` or `filing_integrity.py` that builds
+  its manifest keys with `str(…relative_to(…))` writes `01_Contracts/Memo.md` on macOS and
+  `01_Contracts\Memo.md` on Windows, so a baseline written on one OS reports every file as drift on
+  the other. Offer the patch **as a targeted edit, never a file swap** — deposited copies are
+  adapted (paths, ignore-lists, conventions): write every key with `.as_posix()`, and convert `\`
+  to `/` as the manifest loads. Existing baselines heal on read; no re-snapshot. In the same edit:
+  every watcher `check` writes the `last_check` stamp, the root manual's session-start line names
+  `check --daily`, and the watcher ignores `desktop.ini` and `Thumbs.db`. The scripts live inside
+  the synced folder, so one patch reaches every machine that works it.
+- **A thread-master convention without the end-of-pass `threads` check (v6.7.0; every folder
+  that took the row on v6.5.0 or v6.6.0).** The deposited rule freezes a thread when a filing pass
+  finds it quiet, and no pass looks. Offer, as targeted edits: the `threads` mode in the folder's
+  deposited `filing_integrity.py` (its two constants set to the folder's own prefixes and
+  threshold); the thread sweep as the last filing step of the inbox workflow, after every merge and
+  before the re-snapshot — by hand where the folder runs no script; rule 3 of the convention and
+  the master's threshold slot as the current exemplar carries them; the sidecar's pre-computed
+  freeze sentence removed.
+- **A session-flags register carrying the v6.3.0–v6.6.0 rules (v6.7.0).** Offer the current
+  exemplar's wording: a session reads every Pending flag at session start and delivers only the
+  ones addressed to whoever is present; delivery means the headline is in the session's final
+  answer, and a firing is recorded only when it was; the stamp alone means the headline was given;
+  the *detected miss* sentence removed. **In every v6.6.0 baseline, register or not:** the
+  feedback-milestone offer is made in the final answer and logged only when the final answer
+  carried it. Existing stamps stand.
+- **The write-forward rule without its disposition test (v6.7.0; every folder built before it).**
+  Offer the current root exemplar's clause: history of the subject is demoted whole and kept; a
+  superseded draft of the record itself comes out, with the decision log its home where the
+  reversal was a real decision; a session that has just corrected its own reading of the folder
+  writes the corrected reading only. And the name: this is the *State Forward* discipline.
 - **Rules resting on capability claims.** Where a deposited rule states a capability as its
   *reason* ("deletion is blocked here"), offer the policy-first rewording ("never delete") —
   Phase 6's finder-plus-judgment sweep is the tool, and it must not fire on genuine preconditions

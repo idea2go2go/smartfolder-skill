@@ -13,25 +13,28 @@ filing and the derived summaries don't quietly fall behind the raw files. It is 
 **never a gate**: it informs, then the session continues with whatever was asked.
 
 Everything it needs lives in `XX_META/`: the script, the baseline
-(`_manifests/manifest.tsv` — one line per tracked file: `relative_path · size · mtime · sha1`), and
-the daily stamp (`_manifests/last_check`).
+(`_manifests/manifest.tsv` — one line per tracked file: `relative_path · size · mtime · sha1`, the
+path written with `/` on every OS, so one baseline serves a folder worked from macOS and Windows
+alike), and the daily stamp (`_manifests/last_check`).
 
 ## The two commands
 
 - `python3 XX_META/smartfolder_watch.py snapshot` — write/refresh the baseline ("this is the new normal").
 - `python3 XX_META/smartfolder_watch.py check [--daily]` — diff the live tree vs the baseline; print
-  `ADDED` / `CHANGED` / `REMOVED` (or `CLEAN`).
+  `ADDED` / `CHANGED` / `REMOVED` (or `CLEAN`). Every check that runs writes today's date to the
+  stamp.
 
 ## The once-per-day gate (the `last_check` stamp)
 
-`check --daily` first reads `last_check`. If it already contains today's ISO date, the command exits
-silently. Otherwise it runs the check and writes today's date. So repeated `--daily` calls across
-sessions in one day are no-ops after the first — the stamp is the whole mechanism. A plain `check`
-ignores the stamp and always runs (the "any stray files?" on-demand path).
+The stamp records the date the check last ran: every `check` that runs writes today's ISO date to
+`last_check`. `check --daily` first reads the stamp — today's date already there, and it exits
+silently; otherwise it runs and stamps. So repeated `--daily` calls across sessions in one day are
+no-ops after the first. A plain `check` ignores the stamp, always runs, and stamps too (the "any
+stray files?" on-demand path).
 
 **Behavioral trigger (lives in the root `CLAUDE.md`):** answer the first substantive request of the
 session first; then, at the end of that first reply, read `last_check`. If it is not today's date,
-**offer** to run the daily check — do not run it unprompted. Ask at most once per session; if
+**offer** to run `check --daily` — do not run it unprompted. Ask at most once per session; if
 declined, don't nag — the stamp advances only when the check actually runs, so a deferred day simply
 re-prompts next session. Nothing found → say nothing. Something found → mention it in a line or two,
 **still do the request**, then make the offer below.
@@ -62,9 +65,9 @@ per-file mute; a finding stops surfacing only by being filed or dismissed.)
 
 - **Tracked:** the owner's raw files, including any hand-authored master notes (so direct edits to
   them are caught).
-- **Ignored:** the inbox, trash/staging, `XX_META` itself, hidden/OS cruft (`.DS_Store`, dotfiles),
-  office lock/temp files (`~$…`, `.tmp`), `CLAUDE.md` / `AGENTS.md`, and all AI-derived guides (`_README.md`,
-  `_Synthesis.md`, `*_Summary.md`, hubs).
+- **Ignored:** the inbox, trash/staging, `XX_META` itself, hidden/OS cruft (`.DS_Store`, dotfiles,
+  `desktop.ini`, `Thumbs.db`), office lock/temp files (`~$…`, `.tmp`), `CLAUDE.md` / `AGENTS.md`, and
+  all AI-derived guides (`_README.md`, `_Synthesis.md`, `*_Summary.md`, hubs).
 - **macOS bundles** are tracked as a single unit (size + newest mtime), never recursed into.
 
 ## Detection method (why checks stay near-instant)
