@@ -69,6 +69,10 @@ A first conversion of a large folder can take a while and may span more than one
 normal. Afterwards, the folder maintains itself: ask Claude to *"file the new items"* or *"refresh
 the summaries"* whenever things change.
 
+**Curious what Claude will ask?** [How a SmartFolder gets designed](SmartFolder_InterviewProcess.md)
+walks through the interview: the look Claude takes before asking anything, the seven questions
+it asks, and how your answers decide what your SmartFolder becomes.
+
 **Get a Markdown reader.** The guides and summaries are `.md` files. Conventional editors open
 them as cluttered plain text — the formatting that makes them fast to scan only appears in a
 Markdown reader, and it changes how usable the folder feels. Recommendations under *More*.
